@@ -1,0 +1,159 @@
+:root {
+    --hover-color: black;
+    --primary-color: #457B9D;
+    --secondary-color: #1D3557;
+}
+
+body {
+    font-family: Arial;
+    color: black;
+    margin: 0;
+}
+
+.container {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: var(--hover-color);
+}
+
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    min-height: 50px;
+    width: 100vw;
+}
+
+.top-grid form{
+    margin: 0;
+    padding: 0;
+}
+
+.top-grid img {
+    max-width: 100%;
+}
+
+#sitelogo {
+    padding-left: 0;
+    padding-right: 0;
+    grid-column: 1;
+}
+
+#search {
+    grid-column: 2 / 3;
+}
+
+#search-form {
+    width: 100%;
+}
+
+#search-bar {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+#welcome {
+    padding-left:5px;
+    padding-right:5px;
+    grid-column: 3;
+    font-size: 10px;
+}
+
+header input[type=text]{
+    box-sizing: border-box;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: white;
+    background-image: url('../img/searchicon.png');
+    background-size: 24px;
+    background-position: right center;
+    padding-right: 5px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    width: 100%;
+}
+
+.sitenav {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.usernav {
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+.hamburger-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sitebody {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.listing {
+
+}
+
+footer {
+    background-color: var(--secondary-color);
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+#footer-logo {
+align-items: center;
+    justify-content: center;
+}
+
+footer img{
+    width: 25%;
+}
+
+.link-grid {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    height: 100%;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    text-align: center;
+}
+
+
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: var(--hover-color);
+}
+
+footer .link-grid {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
