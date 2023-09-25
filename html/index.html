@@ -11,85 +11,99 @@
     <!-- Main container for everything -->
     <div class="container">
 
-        <!-- Header -->
-        <header>
-            <!-- Site logo / Search bar / Welcome -->
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <!-- Site logo / Search bar / Welcome -->
 
-            <div class="top-grid">
-                <!-- Logo -->
-                <div class="grid-item" id="sitelogo">
-                    <img src="../img/logo.png" alt="Logo">
+                <div class="top-grid">
+                    <!-- Logo -->
+                    <div class="grid-item" id="sitelogo">
+                        <img src="../img/logo.png" alt="Logo">
+                    </div>
+
+                    <!-- Search (TODO: trying to get it to take up more space)-->
+                    <div class="grid-item" id="search">
+                        <form id="search-form">
+                            <input type="text" id="search-bar" name="search" placeholder="Search...">
+                        </form>
+                    </div>
+
+                    <!-- Welcome -->
+                    <div class="grid-item" id="welcome">
+                        Welcome, [USER]!
+                    </div>
                 </div>
 
-                <!-- Search (TODO: trying to get it to take up more space)-->
-                <div class="grid-item" id="search">
-                    <form id="search-form">
-                        <input type="text" id="search-bar" name="search" placeholder="Search...">
-                    </form>
-                </div>
+                <!-- Navigation -->
+                <div class="sitenav">
 
-                <!-- Welcome -->
-                <div class="grid-item" id="welcome">
-                    Welcome, [USER]!
+                    <!-- General navigation -->
+                    <div class="link-grid">
+                        <div class="grid-item"><a href="">Home</a></div>
+                        <div class="grid-item"><a href="">About</a></div>
+                        <div class="grid-item"><a href="">Contact</a></div>
+                        <div class="grid-item"><a href="">News</a></div>
+                    </div>
+
+                    <!-- User-specific navigation -->
+                    <div class="usernav">
+                        <button id="user-hover">[USER ROLE] Menu</button>
+                        <div class="user-options">
+                            <a href="#" class="dropdown-option">Option 1</a>
+                            <a href="#" class="dropdown-option">Option 2</a>
+                            <a href="#" class="dropdown-option">Option 3...</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <h1>Header</h1>
+                <p>SITE BODY HERE</p>
+                <!-- List of elements -->
+                <div class="listing">
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
+                    .<br>
                 </div>
             </div>
 
-            <!-- Navigation -->
-            <div class="sitenav">
+            <!-- Footer -->
+            <footer>
 
-                <!-- General navigation -->
-                <div class="link-grid">
+                <div id="footer-logo">
+                    <img src="../img/logo.png" alt="Logo"><br>
+                </div>
+
+                <div class="link-grid" id="footer-links">
                     <div class="grid-item"><a href="">Home</a></div>
                     <div class="grid-item"><a href="">About</a></div>
                     <div class="grid-item"><a href="">Contact</a></div>
                     <div class="grid-item"><a href="">News</a></div>
                 </div>
-
-                <!-- User-specific navigation -->
-                <div class="usernav">
-                    <div class="hamburger-grid">
-                        <!-- Label for user menu -->
-                        <div class="grid-item" style="grid-column: 1 / 3">
-                            <p>[Role Name] Menu</p>
-                        </div>
-
-                        <!-- Hamburger menu icon (not working yet) -->
-                        <div class="grid-item" style="grid-column: 3">
-                            <a href="javascript:void(0);" class="icon" onclick="extend()">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-        <!-- Main content -->
-        <div class="sitebody">
-            <h1>Header</h1>
-            <p>SITE BODY HERE</p>
-            <!-- List of elements -->
-            <div class="listing">
-
-            </div>
+            </footer>
         </div>
-
-        <!-- Footer -->
-        <footer>
-
-            <div id="footer-logo">
-                <img src="../img/logo.png" alt="Logo"><br>
-            </div>
-
-            <div class="link-grid">
-                <div class="grid-item"><a href="">Home</a></div>
-                <div class="grid-item"><a href="">About</a></div>
-                <div class="grid-item"><a href="">Contact</a></div>
-                <div class="grid-item"><a href="">News</a></div>
-            </div>
-        </footer>
-
     </div>
 </body>
 </html>
