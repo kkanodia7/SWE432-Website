@@ -2,7 +2,10 @@
     --hover-color: black;
     --primary-color: #457B9D;
     --secondary-color: #1D3557;
+    --shading: #edf0f2;
 }
+
+/*-------------------General site elements-----------------*/
 
 body {
     font-family: Arial;
@@ -15,6 +18,7 @@ body {
     padding-bottom: 0px;
 }
 
+/*------------------Header style----------------------*/
 header {
     background-color: var(--primary-color);
     color: white;
@@ -146,7 +150,6 @@ header input[type=text]{
 }
 /*End of user dropdown*/
 
-
 .hamburger-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -161,11 +164,30 @@ header input[type=text]{
     padding-bottom: 10.5rem;
 }
 
-/*Page body stuff*/
+/*-----------Page body stuff-----------*/
+/*Buttons*/
+button{
+    background-color: #1D3557;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
 
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}
+
+/*Listings within the page*/
 .list-box {
-    display: grid;
-    grid-template-columns: 1fr 2fr 3fr;
+    display: inline-flexbox;
+    flex-direction: row;
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 2fr 3fr;*/
     border: solid 1px gray;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -185,18 +207,10 @@ header input[type=text]{
     display: block;
 }
 
-.list-box button a{
-    text-decoration: none;
-    color: white;
-}
-
 .list-box button{
-    background-color: #1D3557;
-    color: white;
-    border: none;
-    border-radius: 4px;
     padding: 5px 5px 5px 5px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .list-box li {
@@ -207,9 +221,23 @@ header input[type=text]{
 .list-box table{
     width: 100%;
     padding-top: 20px;
+    border-spacing: 0px;
+    margin: 1%;
 }
 
-/*Footer content*/
+.list-box table tr{
+    margin: 5px;
+}
+
+.list-box table tr:nth-child(even){
+    background-color: var(--shading);
+}
+
+.list-box table td{
+    padding: 5px;
+}
+
+/*---------------Footer content-----------------*/
 footer {
     background-color: var(--secondary-color);
     text-align: center;
