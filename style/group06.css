@@ -251,6 +251,10 @@ figure{
     padding: 5px;
 }
 
+.listing {
+    padding-top: 10px;
+}
+
 /*---------------Footer content-----------------*/
 footer {
     background-color: var(--secondary-color);
