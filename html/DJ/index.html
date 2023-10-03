@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>PopCraze Radio</title>
-    <link rel="stylesheet" href="../../style/generalstyle.css">
+    <link rel="stylesheet" href="../../style/group06.css">
     <script src="../../js/generalsite.js"></script>
 </head>
 <body>
@@ -41,8 +41,8 @@
                 <div class="sitenav">
 
                     <!-- General navigation -->
-                    <div class="link-grid">
-                        <div class="grid-item"><a href="">Home</a></div>
+                    <div class="link-grid" style="height: 100%;">
+                        <div class="grid-item"><a href=""><b>Home</a></div>
                         <div class="grid-item"><a href="">About</a></div>
                         <div class="grid-item"><a href="">Contact</a></div>
                         <div class="grid-item"><a href="">News</a></div>
@@ -69,45 +69,47 @@
                     <div class="list-box">
                         <!-- List icon here -->
                         <div class="grid-item">
-                            <img src="../../img/searchicon.png" id="list-icon"></a>
-                        </div>
-
-                        <!-- List text here -->
-                        <div class="grid-item">
-                            <div class="row">
-                                <h4>Subtitle</h4>
-                                <p>[Text about list] feuf hfeau fhi efujah fuef hau fhuefh uehf aie gfh ag hbjugh ageghaeughegheghugah ha fha fh</p>
-                            </div>
-                            <div class="row">
-                                <button>
-                                    <a href="">Manage</a>
-                                </button>
-                            </div>
+                            <figure>
+                                <img src="../../img/searchicon.png" id="list-icon"></a>
+                                <figcaption>
+                                    <h4>[Title of playlist]</h4>
+                                    <p>[Text description of playlist]
+                                        <br>
+                                        <button>
+                                        <a href="">Manage</a>
+                                        </button>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                            
                         </div>
 
                         <!-- List elements here -->
                         <div class="grid-item">
                             <table>
                                 <thead>
-                                    <th>No.</th>
+                                    <th></th>
+                                    <th>Artist</th>
                                     <th>Name</th>
                                     <th>Options</th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
+                                        <td>Artist</td>
                                         <td>Name</td>
                                         <td>
-                                            <button>Option 1</button>
-                                            <button>Option 2</button>
+                                            <button>Remove</button>
+                                            <button>Play</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
+                                        <td>Artist</td>
                                         <td>Name</td>
                                         <td>
-                                            <button>Option 1</button>
-                                            <button>Option 2</button>
+                                            <button>Remove</button>
+                                            <button>Play</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -187,6 +189,12 @@
                     <div class="grid-item"><a href="">News</a></div>
                 </div>
             </footer>
+        </div>
+
+        <!-- Audio Player -->
+        <div id="audio-player">
+            <audio controls>Your browser does not support the audio player!</audio>
+            <p style="font-style:italic;">Now playing: [Placeholder name] - [Placeholder artist]</p>
         </div>
     </div>
 </body>

@@ -93,6 +93,8 @@ header input[type=text]{
 .sitenav {
     display: grid;
     grid-template-columns: auto auto;
+    text-align: center;
+    height: 100%;
 }
 
 /* Dropdown menu for user */
@@ -182,6 +184,12 @@ button:hover {
     background-color: var(--primary-color);
 }
 
+/*----------FIGURES AND CAPTIONS-------------*/
+figure{
+    padding: 0px;
+    margin: 0px;
+}
+
 /*Listings within the page*/
 .list-box {
     display: inline-flexbox;
@@ -193,6 +201,7 @@ button:hover {
     margin-bottom: 10px;
     margin-top: 10px;
     padding-top: 10px;
+    padding-bottom: 10px;
     width: 100%;
 }
 
