@@ -94,7 +94,6 @@ header input[type=text]{
     display: grid;
     grid-template-columns: auto auto;
     text-align: center;
-    height: 100%;
 }
 
 /* Dropdown menu for user */
@@ -132,13 +131,15 @@ header input[type=text]{
     
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
 }
 
 .user-options a {
     color: black;
     text-decoration: none;
+
     display: block;
 }
 
@@ -149,6 +150,10 @@ header input[type=text]{
 .dropdown-option {
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-left: 4px;
+    margin-right: 0;
+    padding-right: 0;
+    width: 95%;
 }
 /*End of user dropdown*/
 
