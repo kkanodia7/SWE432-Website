@@ -172,79 +172,81 @@
 
                         <hr/>
 
-                    <!--Previous timeslot playlists to pick songs from-->
-                    <div>
+                        <!--Previous timeslot playlists to pick songs from-->
                         <h2>Your past playlists</h2>
+                        
                         <!--Each playlist table is its own form-->
+                        <ul id="past-playlist-list" style="padding: 0; margin: 0; list-style-type: none;">
+                            <!-- List of elements -->
+                            <li>
+                                <div class="listing">
+                            
+                                <h3>Date (Start Time - End Time)</h3>
+                                <div class="list-box">
+                                        <!-- List icon here -->
+                                    <div class="grid-item">
+                                            <figure>
+                                                <img src="../../img/searchicon.png" id="list-icon"></a>
+                                                <figcaption>
+                                                <h4>[Title of playlist]</h4>
+                                                    <p>[Text description of playlist]
+                                                    <br>
+                                                </p>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
 
-                        <!-- List of elements 1-->
-                        <div class="listing">
-                    
-                           <h3>Date (Start Time - End Time)</h3>
-                           <div class="list-box">
-                                <!-- List icon here -->
-                             <div class="grid-item">
-                                    <figure>
-                                        <img src="../../img/searchicon.png" id="list-icon"></a>
-                                        <figcaption>
-                                           <h4>[Title of playlist]</h4>
-                                            <p>[Text description of playlist]
-                                               <br>
-                                           </p>
-                                        </figcaption>
-                                    </figure>
+                                    <!-- List elements here -->
+                                    <div class="grid-item">
+                                            <form>   
+                                                <table>
+                                                    <thead>
+                                                        <th></th>
+                                                        <th>Artist</th>
+                                                        <th>Song Title</th>
+                                                        <th>Actions</th>
+                                                        <th>Select</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><b>1</b></td>
+                                                            <td>Sample Artist Name 1</td>
+                                                            <td>Sample Track Name 1</td>
+                                                            <td>
+                                                                <button>Play</button>
+                                                            </td>
+                                                            <td>
+                                                                <input type="checkbox"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>2</b></td>
+                                                            <td>Sample Artist Name 2</td>
+                                                            <td>Sample Track Name 2</td>
+                                                            <td>
+                                                                <button>Play</button>
+                                                            </td>
+                                                            <td>
+                                                                <input type="checkbox"/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="submit" value="Add selected to playlist"/>
+                                                        </td>
+                                                    </tfoot>
+                                                </table>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-
-                               <!-- List elements here -->
-                               <div class="grid-item">
-                                    <form>   
-                                        <table>
-                                            <thead>
-                                                <th></th>
-                                                <th>Artist</th>
-                                                <th>Song Title</th>
-                                                <th>Actions</th>
-                                                <th>Select</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>1</b></td>
-                                                    <td>Sample Artist Name 1</td>
-                                                    <td>Sample Track Name 1</td>
-                                                    <td>
-                                                        <button>Play</button>
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox"/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>2</b></td>
-                                                    <td>Sample Artist Name 2</td>
-                                                    <td>Sample Track Name 2</td>
-                                                    <td>
-                                                        <button>Play</button>
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <input type="submit" value="Add selected to playlist"/>
-                                                </td>
-                                            </tfoot>
-                                        </table>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
