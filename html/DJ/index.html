@@ -38,7 +38,7 @@
                 </div>
 
                 <!-- Navigation -->
-                <div class="sitenav">
+                <nav>
 
                     <!-- General navigation -->
                     <div class="link-grid" style="height:100%">
@@ -52,14 +52,17 @@
                     <div class="usernav">
                         <button id="user-hover"><b>DJ Menu</b></button>
                         <div class="user-options">
-                            <a href="./index.html" class="dropdown-option">Manage Time Slots</a>
+                            <ul style="padding: 0px; margin: 0; list-style-type: none">
+                                <li><a href="./index.html" class="dropdown-option">View Time Slots</a></li>
+                            </ul>
                         </div>
                     </div>
-                </div>
+                </nav>
             </header>
 
             <!-- Main content -->
             <div class="sitebody">
+                <p><a href="" style="color:blue">Home</a> > Time Slots</p>
                 <h1>Time Slots</h1>
                 
                 <!-- List of elements 1-->
@@ -76,7 +79,7 @@
                                     <p>[Text description of playlist]
                                         <br>
                                         <button>
-                                        <a href="">Manage</a>
+                                        <a href="./manage.html">Manage</a>
                                         </button>
                                     </p>
                                 </figcaption>
@@ -89,7 +92,7 @@
                                 <thead>
                                     <th></th>
                                     <th>Artist</th>
-                                    <th>Name</th>
+                                    <th>Song Title</th>
                                     <th>Options</th>
                                 </thead>
                                 <tbody>
@@ -132,7 +135,7 @@
                                     <p>[Text description of playlist]
                                         <br>
                                         <button>
-                                        <a href="">Manage</a>
+                                        <a href="./manage.html">Manage</a>
                                         </button>
                                     </p>
                                 </figcaption>
@@ -145,7 +148,7 @@
                                 <thead>
                                     <th></th>
                                     <th>Artist</th>
-                                    <th>Name</th>
+                                    <th>Song Title</th>
                                     <th>Options</th>
                                 </thead>
                                 <tbody>
@@ -193,7 +196,7 @@
         <!-- Audio Player -->
         <div id="audio-player">
             <audio controls>Your browser does not support the audio player!</audio>
-            <p style="font-style:italic;">Now playing: [Placeholder name] - [Placeholder artist]</p>
+            <p style="font-style:italic;"><b>Now playing:</b> [Placeholder name] - [Placeholder artist]</p>
         </div>
     </div>
 </body>
