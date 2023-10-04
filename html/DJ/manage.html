@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PopCraze Radio</title>
+    <link rel="stylesheet" href="../../style/group06.css">
+    <script src="../../js/generalsite.js"></script>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <!-- Site logo / Search bar / Welcome -->
+
+                <div class="top-grid">
+                    <!-- Logo -->
+                    <div class="grid-item" id="sitelogo">
+                        <img src="../../img/logo.png" alt="Logo">
+                    </div>
+
+                    <!-- Search (TODO: trying to get it to take up more space)-->
+                    <div class="grid-item" id="search">
+                        <form id="search-form">
+                            <input type="text" id="search-bar" name="search" placeholder="Search...">
+                        </form>
+                    </div>
+
+                    <!-- Welcome -->
+                    <div class="grid-item" id="welcome">
+                        Welcome, [USER]!
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="sitenav">
+
+                    <!-- General navigation -->
+                    <div class="link-grid" style="height:100%">
+                        <div class="grid-item"><a href=""><b>Home</b></a></div>
+                        <div class="grid-item"><a href=""><b>About</b></a></div>
+                        <div class="grid-item"><a href=""><b>Contact</b></a></div>
+                        <div class="grid-item"><a href=""><b>News</b></a></div>
+                    </div>
+
+                    <!-- User-specific navigation -->
+                    <div class="usernav">
+                        <button id="user-hover"><b>DJ Menu</b></button>
+                        <div class="user-options">
+                            <a href="./index.html" class="dropdown-option">Manage Time Slots</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <p>Breadcrumbs</p>
+                <h1>Title of page</h1>
+
+                <div class="icon-content-grid">
+
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer>
+
+                <div id="footer-logo">
+                    <img src="../../img/logo.png" alt="Logo"><br>
+                </div>
+
+                <div class="link-grid" id="footer-links">
+                    <div class="grid-item"><a href="">Home</a></div>
+                    <div class="grid-item"><a href="">About</a></div>
+                    <div class="grid-item"><a href="">Contact</a></div>
+                    <div class="grid-item"><a href="">News</a></div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Audio Player -->
+        <div id="audio-player">
+            <audio controls>Your browser does not support the audio player!</audio>
+            <p style="font-style:italic;">Now playing: [Placeholder name] - [Placeholder artist]</p>
+        </div>
+    </div>
+</body>
+</html>
