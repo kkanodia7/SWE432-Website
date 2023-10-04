@@ -355,3 +355,55 @@ audio {
     margin-right: 10px;
     flex: 1;
 }
+
+/*search css content
+* Flexbox for search results */
+.search-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 10px;
+}
+
+.search-image img {
+    /*max-width: 20%;
+    display: block;
+    */
+    flex: 0 0 20%;
+    display: flex;
+    align-items: center; /* center the image vertically */
+    justify-content: center;
+}
+.search-image img {
+    max-width: 100%; 
+    height: auto;
+}
+
+.search-content {
+    flex: 0 0 80%;
+    padding: 20px;
+    border: 1px solid var(--shading);
+    border-radius: 4px;
+}
+
+#search-title {
+    margin-bottom: 20px;
+}
+
+.list-box-Search {
+    display: flex;             /* flex container */
+    justify-content: space-between; /* Space between the two divs */
+    align-items: start;        /* Align to the top */
+}
+
+.grid-item-Search {
+    flex: 1;                   /* item takes equal width */
+    margin: 10px;              /* Optional: add some spacing */
+}
+#artist-image {
+    max-width: 300px;
+    max-height: 300px;
+    display: block; 
+    margin-left: 0; 
+    margin-right: auto;
+}

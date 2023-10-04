@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PopCraze Radio</title>
+    <link rel="stylesheet" href="../style/group06.css">
+    <script src="../js/generalsite.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Site logo / Search bar / Welcome -->
+        <div class="top-grid">
+            <!-- Logo -->
+            <div class="grid-item" id="sitelogo">
+                <img src="../img/logo.png" alt="Logo">
+            </div>
+
+            <!-- Search -->
+            <div class="grid-item" id="search">
+                <form id="search-form">
+                    <input type="text" id="search-bar" name="search" placeholder="Search...">
+                </form>
+            </div>
+
+            <!-- Welcome -->
+            <div class="grid-item" id="welcome">
+                Welcome, [USER]!
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="sitenav">
+            <!-- General navigation -->
+            <div class="link-grid" style="height:100%">
+                <div class="grid-item"><a href=""><b>Home</b></a></div>
+                <div class="grid-item"><a href=""><b>About</b></a></div>
+                <div class="grid-item"><a href=""><b>Contact</b></a></div>
+                <div class="grid-item"><a href=""><b>News</b></a></div>
+            </div>
+
+            <!-- User-specific navigation -->
+            <div class="usernav">
+                <button id="user-hover"><b>Someones Menu</b></button>
+                <div class="user-options">
+                    <a href="./index.html" class="dropdown-option">Manage Time Slots</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ... other parts of the HTML ... -->
+
+    <!-- Main content -->
+    <div class="sitebody">
+        <h1 id="search-title">Search results for: [Search Query]</h1>
+
+        <!-- Flexbox for Image on the left and Content on the right -->
+        <div class="search-flex-container">
+            <div class="search-image">
+                <img src="../img/searchicon.png" alt="Image for search">
+            </div>
+            <div class="search-content">
+                <div class="list-box">
+                    <!-- Artist's image and bio -->
+                    <div class="grid-item">
+                        <figure>
+                            <img src="../img/Image-scaled.png" id="artist-image" alt="Artist Image">
+                            <!-- Replace with actual artist image path -->
+                            <figcaption>
+                                <h4>[Artist Name]</h4>
+                                <p>[Artist Bio]</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <!-- Table with song list -->
+                    <div class="grid-item">
+                        <h4>[Artist Name]'s Songs</h4>
+                        <table>
+                            <thead>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Duration</th>
+                                <th>Options</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Song Title 1</td>
+                                    <td>3:45</td>
+                                    <td>
+                                        <button>Edit</button>
+                                        <button>Play</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Song Title 2</td>
+                                    <td>4:20</td>
+                                    <td>
+                                        <button>Edit</button>
+                                        <button>Play</button>
+                                    </td>
+                                </tr>
+                                <!-- Add more rows for more songs -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <!-- Footer -->
+    <footer>
+        <div id="footer-logo">
+            <img src="../img/logo.png" alt="Logo"><br>
+        </div>
+
+        <div class="link-grid">
+            <div class="grid-item"><a href="">Home</a></div>
+            <div class="grid-item"><a href="">About</a></div>
+            <div class="grid-item"><a href="">Contact</a></div>
+            <div class="grid-item"><a href="">News</a></div>
+        </div>
+    </footer>
+</body>
+
+</html>
