@@ -13,6 +13,18 @@
         table td:first-child{
             color: black;
         }
+        .row{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -73,89 +85,92 @@
             <div class="sitebody">
                 <p><a href="" style="color:blue">Home</a> > <a href="./index.html" style="color:blue">Time Slots</a> > Manage Time Slot</p>
                 <h1>Manage Time Slot</h1>
+
+                <div class="row">
                 
-                <!--Left column of grid layout-->
-                <figure>
-                    <img src="../../img/searchicon.png" style="max-width: 200px; max-height:200px;"/>
-                    <figcaption>
-                        <h2>Your scheduled playlist</h2>
-                        <h3>Date (Start Time - End Time)</h3>
-                    </figcaption>
-                </figure>
+                    <!--Left column of grid layout-->
+                    <div class="column" style="flex: 1">
+                        <figure>
+                            <img src="../../img/searchicon.png" style="max-width: 200px; max-height:200px;"/>
+                            <figcaption>
+                                <h2>Your scheduled playlist</h2>
+                                <h3>Date (Start Time - End Time)</h3>
+                            </figcaption>
+                        </figure>
 
-                <div id="dialog-wrapper" style="position:relative">
-                    <dialog open style="margin: 0; position:absolute;">
-                        <form method="dialog">
-                            <button autofocus>Undo</button>
-                            <button>OK</button>
-                        </form>
-                        <p>You made changes to your playlist.</p>
-                    </dialog>
-                </div>
+                        <div id="dialog-wrapper" style="position:relative">
+                            <dialog open style="margin: 0; position:absolute;">
+                                <form method="dialog">
+                                    <button autofocus>Undo</button>
+                                    <button>OK</button>
+                                </form>
+                                <p>You made changes to your playlist.</p>
+                            </dialog>
+                        </div>
+                    </div>
                 
-                <!--Right column of grid layout-->
-                <div>
+                    <!--Right column of grid layout-->
+                    <div class="column" style="flex: 2">
 
-                    <!--Playlist for this timeslot-->
-                    <div>
-                        <h4>[Playlist title]</h4> 
-                        <div class="listing">
-                            <div class="list-box">
-                                <!-- List elements here -->
-                                <div class="grid-item">
+                        <!--Playlist for this timeslot-->
+                        <div>
+                            <h4>[Playlist title]</h4> 
 
-                                    <form>
-                                        <table>
-                                            <thead>
-                                                <th></th>
-                                                <th>Artist</th>
-                                                <th>Song Title</th>
-                                                <th>Actions</th>
-                                                <th>Select</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>1</b></td>
-                                                    <td>Sample Artist Name 1</td>
-                                                    <td>Sample Track Name 1</td>
+                            <div class="listing">
+                                <div class="list-box">
+                                    <!-- List elements here -->
+                                    <div class="grid-item">
+
+                                        <form>
+                                            <table>
+                                                <thead>
+                                                    <th></th>
+                                                    <th>Artist</th>
+                                                    <th>Song Title</th>
+                                                    <th>Actions</th>
+                                                    <th>Select</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><b>1</b></td>
+                                                        <td>Sample Artist Name 1</td>
+                                                        <td>Sample Track Name 1</td>
+                                                        <td>
+                                                            <button>Play</button>
+                                                        </td>
+                                                        <td>
+                                                            <input type="checkbox"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>2</b></td>
+                                                        <td>Sample Artist Name 2</td>
+                                                        <td>Sample Track Name 2</td>
+                                                        <td>
+                                                            <button>Play</button>
+                                                        </td>
+                                                        <td>
+                                                            <input type="checkbox"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td>
-                                                        <button>Play</button>
+                                                        <input type="submit" value="Remove selected"/>
                                                     </td>
-                                                    <td>
-                                                        <input type="checkbox"/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>2</b></td>
-                                                    <td>Sample Artist Name 2</td>
-                                                    <td>Sample Track Name 2</td>
-                                                    <td>
-                                                        <button>Play</button>
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <input type="submit" value="Remove selected"/>
-                                                </td>
-                                                
-                                            </tfoot>
-                                        </table>
-                                        
-                                    </form>
+                                                </tfoot>
+                                            </table>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <hr/>
+                        <hr/>
 
                     <!--Previous timeslot playlists to pick songs from-->
                     <div>
@@ -229,6 +244,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
