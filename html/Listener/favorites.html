@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PopCraze Radio</title>
+    <link rel="stylesheet" href="../../style/group06.css">
+    <script src="../../js/generalsite.js"></script>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <!-- Site logo / Search bar / Welcome -->
+
+                <div class="top-grid">
+                    <!-- Logo -->
+                    <div class="grid-item" id="sitelogo">
+                        <img src="../../img/logo.png" alt="PopCraze Logo">
+                    </div>
+
+                    <!-- Search -->
+                    <div class="grid-item" id="search">
+                        <form id="search-form">
+                            <input type="text" id="search-bar" name="search" placeholder="Search...">
+                        </form>
+                    </div>
+
+                    <!-- Welcome -->
+                    <div class="grid-item" id="welcome">
+                        Welcome, [USER]!
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="sitenav">
+
+                    <!-- General navigation -->
+                    <div class="link-grid" style="height:100%">
+                        <div class="grid-item"><a href=""><b>Home</b></a></div>
+                        <div class="grid-item"><a href=""><b>About</b></a></div>
+                        <div class="grid-item"><a href=""><b>Contact</b></a></div>
+                        <div class="grid-item"><a href=""><b>News</b></a></div>
+                    </div>
+
+
+                    <!-- User-specific navigation -->
+                    <div class="usernav">
+                        <button id="user-hover"><b>Listener Menu</b></button>
+                        <div class="user-options">
+                            <a href="#" class="dropdown-option">My Preferences</a>
+                            <a href="#" class="dropdown-option">Favorites</a>
+                            <a href="#" class="dropdown-option">Recommended</a>
+                            <a href="#" class="dropdown-option">Popular Upcoming</a>
+                            <a href="#" class="dropdown-option">Live Now</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- Main Content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="./index.html">My Playlists</a> > <a href="">Favorites</a></p>
+                <h1>Favorites Playlist</h1>
+        
+                <!-- Flexbox for Image on the left and Content on the right -->
+                <div class="search-flex-container">
+                    <div class="search-image">
+                        <img src="../../img/fav_icon.png" alt="Favorites Icon">
+                    </div>
+                    <div class="search-content">
+                        <p>This playlist contains all songs and DJs you have favorited. These are used to determine
+                            your preferences. To find more songs to add to your favorites, use the search bar above or check
+                            out the <a href="./recommended.html">Recommended</a> playlist.
+                        </p>
+                        <div class="list-box">
+                            <!-- Table with song list -->
+                            <div class="grid-item">
+                                <h2>Favorite Songs</h2>
+                                <table>
+                                    <thead>
+                                        <th></th>
+                                        <th>Artist</th>
+                                        <th>Song</th>
+                                        <th>Options</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Artist</td>
+                                            <td>Song</td>
+                                            <td>
+                                                <button>Play</button>
+                                                <button>Details</button>
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Artist</td>
+                                            <td>Song</td>
+                                            <td>
+                                                <button>Play</button>
+                                                <button>Details</button>
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="list-box">        
+                            <!-- Table with DJ list -->
+                            <div class="grid-item">
+                                <h2>Favorite DJs</h2>
+                                <table>
+                                    <thead>
+                                        <th></th>
+                                        <th>DJ</th>
+                                        <th>Options</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>DJ</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>DJ</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer -->
+            <footer>
+
+                <div id="footer-logo">
+                    <img src="../../img/logo.png" alt="PopCraze Logo"><br>
+                </div>
+
+                <div class="link-grid" id="footer-links">
+                    <div class="grid-item"><a href="">Home</a></div>
+                    <div class="grid-item"><a href="">About</a></div>
+                    <div class="grid-item"><a href="">Contact</a></div>
+                    <div class="grid-item"><a href="">News</a></div>
+                </div>
+            </footer>
+
+            <!-- Audio Player -->
+            <div id="audio-player">
+                <audio controls>Your browser does not support the audio player!</audio>
+                <div>
+                    <p style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
+                    <div id="audio-player-options">
+                        <button>Details</button>
+                        <button>Favorite</button>
+                        <button>Close</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
