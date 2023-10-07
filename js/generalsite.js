@@ -23,3 +23,20 @@ function performSearch() {
 
     xhr.send();
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const playPauseButton = document.getElementById("playPauseButton");
+    const playPauseImage = document.getElementById("playPauseImage"); 
+    
+    playPauseButton.addEventListener("click", function() {
+        if (playPauseImage.getAttribute("alt") === "Play Icon") {
+            playPauseImage.setAttribute("src", "../../img/line-md:pause-transition.svg");
+            playPauseImage.setAttribute("alt", "Pause Icon");
+        } else {
+            playPauseImage.setAttribute("src", "../../img/line-md:play-to-pause-transition.svg");
+            playPauseImage.setAttribute("alt", "Play Icon");
+        }
+    });
+});

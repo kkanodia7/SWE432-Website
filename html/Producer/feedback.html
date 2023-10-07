@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PopCraze Radio</title>
+    <link rel="stylesheet" href="../../style/group06.css">
+    <script src="../../js/generalsite.js"></script>
+</head>
+
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+
+            <!-- Header -->
+            <header>
+                <!-- Site logo / Search bar / Welcome -->
+
+                <div class="top-grid">
+                    <!-- Logo -->
+                    <div class="grid-item" id="sitelogo">
+                        <img src="../../img/logo.png" alt="PopCraze Logo">
+                    </div>
+
+                    <!-- Search -->
+                    <div class="grid-item" id="search">
+                        <form id="search-form">
+                            <input type="text" id="search-bar" name="search" placeholder="Search...">
+                        </form>
+                    </div>
+
+                    <!-- Welcome -->
+                    <div class="grid-item" id="welcome">
+                        Welcome, [USER]!
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="sitenav">
+
+                    <!-- General navigation -->
+                    <div class="link-grid" style="height:100%">
+                        <div class="grid-item"><a href=""><b>Home</b></a></div>
+                        <div class="grid-item"><a href=""><b>About</b></a></div>
+                        <div class="grid-item"><a href=""><b>Contact</b></a></div>
+                        <div class="grid-item"><a href=""><b>News</b></a></div>
+                    </div>
+
+                    <!-- User-specific navigation -->
+                    <div class="usernav">
+                        <button id="user-hover"><b>
+                                <img src="../../img/ion_menu.svg" alt="Icon" width="40" height="35">
+                            </b></button>
+                        <div class="user-options boldAndLarge">
+                            <ul style="list-style-type: none; margin: 0%; padding: 0%;">
+                                <li><a href="./index.html" class="dropdown-option">
+                                        <img src="../../img/ion_time-outline.svg" alt="Icon" width="40" height="35">
+                                        Schedule</a></li>
+                                <li><a href="./DJ-page.html" class="dropdown-option">
+                                        <img src="../../img/tabler_music.svg" alt="Icon" width="40" height="35">
+                                        DJ</a></li>
+                                <li><a href="./trend.html" class="dropdown-option">
+                                        <img src="../../img/ion_stats-chart.svg" alt="Icon" width="40" height="35">
+                                        Trends</a></li>
+                                <li><a href="./feedback.html" class="dropdown-option">
+                                        <img src="../../img/fluent-mdl2_feedback.svg" alt="Icon" width="40" height="35">
+                                        Feedback</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="./feedback.html">Feedback</a></p>
+                <h1>Feedback Page</h1>
+
+                <!-- Flexbox for Image on the left and Content on the right -->
+                <div class="search-flex-container">
+                    <div class="search-image">
+                        <img src="../../img/fluent-mdl2_feedback.svg" alt="Feedback Icon" width="200" height="200">
+                    </div>
+                    <div class="search-content">
+                        <p>We value your feedback! Let us know what you think about our DJs, songs, and time slots.</p>
+                        <div class="list-box">
+                            <div class="grid-item">
+                                <h2>Leave Feedback</h2>
+                                <form action="submitFeedbackURL" method="post">
+                                    <textarea name="feedbackText" rows="5" cols="50" placeholder="Type your feedback here..."></textarea><br>
+                                    <input type="submit" value="Submit Feedback">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+
+                <div id="footer-logo">
+                    <img src="../../img/logo.png" alt="PopCraze Logo"><br>
+                </div>
+
+                <div class="link-grid" id="footer-links">
+                    <div class="grid-item"><a href="">Home</a></div>
+                    <div class="grid-item"><a href="">About</a></div>
+                    <div class="grid-item"><a href="">Contact</a></div>
+                    <div class="grid-item"><a href="">News</a></div>
+                </div>
+            </footer>
+
+            <!-- Audio Player -->
+            <div id="audio-player">
+                <audio controls>Your browser does not support the audio player!</audio>
+                <div>
+                    <p style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
+                    <div id="audio-player-options">
+                        <button>Details</button>
+                        <button>Favorite</button>
+                        <button>Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
