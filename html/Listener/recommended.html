@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>PopCraze Radio</title>
     <link rel="stylesheet" href="../../style/group06.css">
-    <script src="../../js/generalsite.js"></script>
+    <script src="../../js/listener.js"></script>
 </head>
 <body>
 
@@ -96,7 +96,7 @@
                                             <td>Artist</td>
                                             <td>Song</td>
                                             <td>
-                                                <button>Play</button>
+                                                <button onclick="playSong()">Play</button>
                                                 <button>Details</button>
                                                 <button>Favorite</button>
                                                 <button>Remove</button>
@@ -107,7 +107,7 @@
                                             <td>Artist</td>
                                             <td>Song</td>
                                             <td>
-                                                <button>Play</button>
+                                                <button onclick="playSong()">Play</button>
                                                 <button>Details</button>
                                                 <button>Favorite</button>
                                                 <button>Remove</button>
@@ -177,14 +177,14 @@
             </footer>
 
             <!-- Audio Player -->
-            <div id="audio-player">
-                <audio controls>Your browser does not support the audio player!</audio>
+            <div id="audio-player" style="display: none;">
+                <audio id="audio-control" controls>Your browser does not support the audio player!</audio>
                 <div>
                     <p style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
                     <div id="audio-player-options">
                         <button>Details</button>
                         <button>Favorite</button>
-                        <button>Close</button>
+                        <button onclick="closePlayer()">Close</button>
                     </div>
                 </div>
             </div>
