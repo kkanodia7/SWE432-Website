@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>PopCraze Radio</title>
     <link rel="stylesheet" href="../../style/group06.css">
-    <script src="../../js/generalsite.js"></script>
+    <link rel="stylesheet" href="../../style/dj.css">
+    <script src="../../js/dj.js"></script>
 </head>
 <body>
 
@@ -71,15 +72,15 @@
                         <!-- List of elements 1-->
                         <div class="listing">
                             
-                            <h3>Date (Start Time - End Time)</h3>
+                            <h3 class="date-time">11/24/2023 (1:00pm - 3:00pm)</h3>
                             <div class="list-box">
                                 <!-- List icon here -->
                                 <div class="grid-item">
                                     <figure>
                                         <img src="../../img/searchicon.png" id="list-icon"></a>
                                         <figcaption>
-                                            <h4>[Title of playlist]</h4>
-                                            <p>[Text description of playlist]
+                                            <h4 class="timeslot-title">Afternoon Tunes</h4>
+                                            <p class="timeslot-desc">Songs to play for a relaxing afternoon.
                                                 <br>
                                                 <button>
                                                 <a href="./manage.html">Manage</a>
@@ -98,23 +99,23 @@
                                             <th>Song Title</th>
                                             <th>Options</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="timeslot-body">
                                             <tr>
                                                 <td>1</td>
-                                                <td>Artist</td>
-                                                <td>Name</td>
+                                                <td>Miley Cyrus</td>
+                                                <td>Flowers</td>
                                                 <td>
-                                                    <button>Remove</button>
-                                                    <button>Play</button>
+                                                    <button class="remove-btn" type="button">Remove</button>
+                                                    <button class="play-btn" type="button">Play</button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>Artist</td>
-                                                <td>Name</td>
+                                                <td>Katy Perry</td>
+                                                <td>Firework</td>
                                                 <td>
-                                                    <button>Remove</button>
-                                                    <button>Play</button>
+                                                    <button class="remove-btn" type="button">Remove</button>
+                                                    <button class="play-btn" type="button">Play</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -129,15 +130,15 @@
                     <li>
                         <div class="listing">
                             
-                            <h3>Date (Start Time - End Time)</h3>
+                            <h3>11/30/2023 (7:00am - 11:00am)</h3>
                             <div class="list-box">
                                 <!-- List icon here -->
                                 <div class="grid-item">
                                     <figure>
                                         <img src="../../img/searchicon.png" id="list-icon"></a>
                                         <figcaption>
-                                            <h4>[Title of playlist]</h4>
-                                            <p>[Text description of playlist]
+                                            <h4 class="timeslot-title">Morning Mix</h4>
+                                            <p class="timeslot-desc">Songs to start the day with.
                                                 <br>
                                                 <button>
                                                 <a href="./manage.html">Manage</a>
@@ -156,23 +157,23 @@
                                             <th>Song Title</th>
                                             <th>Options</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="timeslot-body">
                                             <tr>
                                                 <td>1</td>
-                                                <td>Artist</td>
-                                                <td>Name</td>
+                                                <td>Nicki Minaj</td>
+                                                <td>Barbie World</td>
                                                 <td>
-                                                    <button>Remove</button>
-                                                    <button>Play</button>
+                                                    <button class="remove-btn" type="button">Remove</button>
+                                                    <button class="play-btn" type="button">Play</button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>Artist</td>
-                                                <td>Name</td>
+                                                <td>Miley Cyrus</td>
+                                                <td>Flowers</td>
                                                 <td>
-                                                    <button>Remove</button>
-                                                    <button>Play</button>
+                                                    <button class="remove-btn" type="button">Remove</button>
+                                                    <button class="play-btn" type="button">Play</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -203,7 +204,7 @@
         <!-- Audio Player -->
         <div id="audio-player">
             <audio controls>Audio player not supported.</audio>
-            <p style="font-style:italic;"><b>Playing:</b> [Song name] - [Artist name]</p>
+            <p style="font-style:italic;" id="player-text"><b>Playing:</b> [Song name] - [Artist name]</p>
         </div>
     </div>
 </body>

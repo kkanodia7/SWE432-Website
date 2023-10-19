@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>PopCraze Radio</title>
     <link rel="stylesheet" href="../../style/group06.css">
-    <script src="../../js/generalsite.js"></script>
+    <link rel="stylesheet" href="../../style/dj.css">
+    <script src="../../js/dj.js"></script>
     <style>
         tbody{
             color:darkslategrey;
@@ -94,7 +95,10 @@
                             <img src="../../img/searchicon.png" style="max-width: 200px; max-height:200px;"/>
                             <figcaption>
                                 <h2>Your scheduled playlist</h2>
-                                <h3>Date (Start Time - End Time)</h3>
+                                <h3 id="date-time">
+                                    <p id="date">11/24/2023</p>
+                                    <p id="times">1:00pm - 3:00pm</p>
+                                </h3>
                             </figcaption>
                         </figure>
 
@@ -102,8 +106,8 @@
                             <dialog open style="margin: 0; position:absolute; border-color: green; border-width: 2px; border-radius: 4px; background-color: lightgreen;">
                                 <h4>You made changes to your playlist.</h4>
                                 <form method="dialog">
-                                    <button autofocus>Undo</button>
-                                    <button>OK</button>
+                                    <button autofocus id="dialog-undo">Undo</button>
+                                    <button id="dialog-ok">OK</button>
                                 </form>
                             </dialog>
                         </div>
@@ -114,14 +118,32 @@
 
                         <!--Playlist for this timeslot-->
                         <div>
-                            <h2>[Playlist title]</h2> 
+                            <h2 id="timeslot-title">Afternoon Tunes</h2> 
+                            <p id="timeslot-desc">Songs to play for a relaxing afternoon.</p>
+
+                            <button type="button" id="edit-form-toggle" onclick="(() => 
+                                document.getElementById('playlist-form').style.display = 'inline')()">
+                                Edit playlist information
+                            </button>
+                            <form id="playlist-form" onsubmit="return false">
+                                <br>
+                                Edit title:
+                                <br>
+                                <input type="text" name="title" id="edit-title">
+                                <br>
+                                Edit description:
+                                <br>
+                                <input type="textarea" name="desc" id="edit-desc">
+                                <br>
+                                <input type="submit" value="Submit">
+                            </form>
 
                             <div class="listing">
                                 <div class="list-box">
                                     <!-- List elements here -->
                                     <div class="grid-item">
 
-                                        <form>
+                                        <form id="current-timeslot-form" onsubmit="return false">
                                             <table>
                                                 <thead>
                                                     <th></th>
@@ -130,27 +152,27 @@
                                                     <th>Actions</th>
                                                     <th>Select</th>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="timeslot-body">
                                                     <tr>
                                                         <td><b>1</b></td>
-                                                        <td>Sample Artist Name 1</td>
-                                                        <td>Sample Track Name 1</td>
+                                                        <td>SZA</td>
+                                                        <td>Kill Bill</td>
                                                         <td>
-                                                            <button>Play</button>
+                                                            <button class="play-btn" type="button">Play</button>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox"/>
+                                                            <input type="checkbox" class="checkbox"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><b>2</b></td>
-                                                        <td>Sample Artist Name 2</td>
-                                                        <td>Sample Track Name 2</td>
+                                                        <td>Miley Cyrus</td>
+                                                        <td>Flowers</td>
                                                         <td>
-                                                            <button>Play</button>
+                                                            <button class="play-btn" type="button">Play</button>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox"/>
+                                                            <input type="checkbox" class="checkbox"/>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -160,7 +182,7 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <input type="submit" value="Remove selected"/>
+                                                        <input type="submit" value="Remove selected" id="remove-current-songs"/>
                                                     </td>
                                                 </tfoot>
                                             </table>
@@ -180,53 +202,45 @@
                             <li>
                                 <div class="listing">
                             
-                                <h3>Date (Start Time - End Time)</h3>
+                                <h3><p class="past-date-time">10/18/2023 9:00pm - 11:00pm</p>
+                                </h3>
                                 <div class="list-box">
                                         <!-- List icon here -->
                                     <div class="grid-item">
                                             <figure>
                                                 <img src="../../img/searchicon.png" id="list-icon"></a>
                                                 <figcaption>
-                                                <h4>[Title of playlist]</h4>
-                                                    <p>[Text description of playlist]
-                                                    <br>
-                                                </p>
+                                                <h4 class = "past-title">Past Playlist Title</h4>
+                                                    <p class = "past-desc">Past Playlist Description</p>
                                                 </figcaption>
                                             </figure>
                                         </div>
 
                                     <!-- List elements here -->
                                     <div class="grid-item">
-                                            <form>   
+                                            <div class="past-playlist-table-container">   
                                                 <table>
                                                     <thead>
                                                         <th></th>
                                                         <th>Artist</th>
                                                         <th>Song Title</th>
                                                         <th>Actions</th>
-                                                        <th>Select</th>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td><b>1</b></td>
-                                                            <td>Sample Artist Name 1</td>
-                                                            <td>Sample Track Name 1</td>
+                                                            <td>Taylor Swift</td>
+                                                            <td>Cruel Summer</td>
                                                             <td>
-                                                                <button>Play</button>
-                                                            </td>
-                                                            <td>
-                                                                <input type="checkbox"/>
+                                                                <button class="play-btn" type="button">Play</button>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td><b>2</b></td>
-                                                            <td>Sample Artist Name 2</td>
-                                                            <td>Sample Track Name 2</td>
+                                                            <td>Drake</td>
+                                                            <td>Virginia Beach</td>
                                                             <td>
-                                                                <button>Play</button>
-                                                            </td>
-                                                            <td>
-                                                                <input type="checkbox"/>
+                                                                <button class="play-btn" type="button">Play</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -234,13 +248,14 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td></td>
                                                         <td>
-                                                            <input type="submit" value="Add selected to playlist"/>
+                                                            <button>
+                                                                <a href="./playlist.html">Add songs to current timeslot
+                                                            </button>
                                                         </td>
                                                     </tfoot>
                                                 </table>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -269,7 +284,7 @@
         <!-- Audio Player -->
         <div id="audio-player">
             <audio controls>Audio player not supported.</audio>
-            <p style="font-style:italic;"><b>Playing:</b> [Song name] - [Artist name]</p>
+            <p style="font-style:italic;" id="player-text"><b>Playing:</b> [Song name] - [Artist name]</p>
         </div>
     </div>
 </body>
