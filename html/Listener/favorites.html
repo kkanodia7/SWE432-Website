@@ -93,22 +93,32 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Artist</td>
-                                            <td>Song</td>
+                                            <td>Artist1</td>
+                                            <td>FavSong1</td>
                                             <td>
-                                                <button onclick="playSong()">Play</button>
+                                                <button onclick="playSong(this)">Play</button>
                                                 <button>Details</button>
-                                                <button>Remove</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Artist</td>
-                                            <td>Song</td>
+                                            <td>Artist2</td>
+                                            <td>FavSong2</td>
                                             <td>
-                                                <button onclick="playSong()">Play</button>
+                                                <button onclick="playSong(this)">Play</button>
                                                 <button>Details</button>
-                                                <button>Remove</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Artist3</td>
+                                            <td>FavSong3</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -130,18 +140,26 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>DJ</td>
+                                            <td>DJ1</td>
                                             <td>
                                                 <button>Details</button>
-                                                <button>Remove</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>DJ</td>
+                                            <td>DJ2</td>
                                             <td>
                                                 <button>Details</button>
-                                                <button>Remove</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>DJ3</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -173,7 +191,7 @@
             <div id="audio-player" style="display: none;">
                 <audio id="audio-control" controls>Your browser does not support the audio player!</audio>
                 <div>
-                    <p style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
+                    <p id="audio-label" style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
                     <div id="audio-player-options">
                         <button>Details</button>
                         <button>Favorite</button>

@@ -83,7 +83,7 @@
                             <!-- Table with song list -->
                             <div class="grid-item">
                                 <h2>Recommended Songs</h2>
-                                <table>
+                                <table id="rec-songs">
                                     <thead>
                                         <th></th>
                                         <th>Artist</th>
@@ -93,24 +93,35 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Artist</td>
-                                            <td>Song</td>
+                                            <td>Artist3</td>
+                                            <td>RecSong1</td>
                                             <td>
-                                                <button onclick="playSong()">Play</button>
+                                                <button onclick="playSong(this)">Play</button>
                                                 <button>Details</button>
-                                                <button>Favorite</button>
-                                                <button>Remove</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Artist</td>
-                                            <td>Song</td>
+                                            <td>Artist4</td>
+                                            <td>RecSong2</td>
                                             <td>
-                                                <button onclick="playSong()">Play</button>
+                                                <button onclick="playSong(this)">Play</button>
                                                 <button>Details</button>
-                                                <button>Favorite</button>
-                                                <button>Remove</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Artist5</td>
+                                            <td>RecSong3</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -123,7 +134,7 @@
                             <!-- Table with DJ list -->
                             <div class="grid-item">
                                 <h2>Recommended DJs</h2>
-                                <table>
+                                <table id="rec-djs">
                                     <thead>
                                         <th></th>
                                         <th>DJ</th>
@@ -133,22 +144,32 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>DJ</td>
+                                            <td>DJ4</td>
                                             <td>Time Slot</td>
                                             <td>
                                                 <button>Details</button>
-                                                <button>Favorite</button>
-                                                <button>Remove</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>DJ</td>
+                                            <td>DJ5</td>
                                             <td>Time Slot</td>
                                             <td>
                                                 <button>Details</button>
-                                                <button>Favorite</button>
-                                                <button>Remove</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>DJ6</td>
+                                            <td>Time Slot</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -180,7 +201,7 @@
             <div id="audio-player" style="display: none;">
                 <audio id="audio-control" controls>Your browser does not support the audio player!</audio>
                 <div>
-                    <p style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
+                    <p id="audio-label" style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
                     <div id="audio-player-options">
                         <button>Details</button>
                         <button>Favorite</button>

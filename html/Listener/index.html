@@ -77,6 +77,7 @@
                         <!-- List icon here -->
                         <div class="grid-item">
                             <img src="../../img/fav_icon.png" alt="Favorites Icon" id="list-icon"></a>
+                            <!-- Fav Icon obtained from: https://www.freeimages.com/clipart/heart-5299786 -->
                         </div>
 
                         <!-- List text here -->
@@ -98,25 +99,25 @@
                                 <thead>
                                     <th></th>
                                     <th>Artist</th>
-                                    <th>Name</th>
+                                    <th>Song</th>
                                     <th>Options</th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Artist</td>
-                                        <td>Name</td>
+                                        <td>Artist1</td>
+                                        <td>FavSong1</td>
                                         <td>
-                                            <button onclick="playSong()">Play</button>
+                                            <button onclick="playSong(this)">Play</button>
                                             <button>Details</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>Artist</td>
-                                        <td>Name</td>
+                                        <td>Artist2</td>
+                                        <td>FavSong2</td>
                                         <td>
-                                            <button onclick="playSong()">Play</button>
+                                            <button onclick="playSong(this)">Play</button>
                                             <button>Details</button>
                                         </td>
                                     </tr>
@@ -135,6 +136,7 @@
                         <!-- List icon here -->
                         <div class="grid-item">
                             <img src="../../img/rec_icon.png" alt="Recommended Icon" id="list-icon"></a>
+                            <!-- Rec Icon obtained from: https://www.cleanpng.com/free/yellow-star.html -->
                         </div>
 
                         <!-- List text here -->
@@ -156,25 +158,25 @@
                                 <thead>
                                     <th></th>
                                     <th>Artist</th>
-                                    <th>Name</th>
+                                    <th>Song</th>
                                     <th>Options</th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Artist</td>
-                                        <td>Name</td>
+                                        <td>Artist3</td>
+                                        <td>RecSong1</td>
                                         <td>
-                                            <button onclick="playSong()">Play</button>
+                                            <button onclick="playSong(this)">Play</button>
                                             <button>Details</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>Artist</td>
-                                        <td>Name</td>
+                                        <td>Artist4</td>
+                                        <td>RecSong2</td>
                                         <td>
-                                            <button onclick="playSong()">Play</button>
+                                            <button onclick="playSong(this)">Play</button>
                                             <button>Details</button>
                                         </td>
                                     </tr>
@@ -208,7 +210,7 @@
             <div id="audio-player" style="display: none;">
                 <audio id="audio-control" controls>Your browser does not support the audio player!</audio>
                 <div>
-                    <p style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
+                    <p id="audio-label" style="margin-top: 0%; margin-bottom: 4px;"><i><b>Playing:</b> [Song name] - [Artist name]</i></p>
                     <div id="audio-player-options">
                         <button>Details</button>
                         <button>Favorite</button>
