@@ -1,7 +1,29 @@
 window.addEventListener("DOMContentLoaded", (e) => {
-    //Put everything here
+    //Proof of DOM Content Load
     console.log("DOM Content Loaded!");
+
+    //--------------------------------------------------------------------CHECKBOX FORMS
     
+    //Event listener for adding songs via checkboxes (calls validateForm)
+    let pastPlaylistForm = document.getElementById("past-playlist-form");
+    if (pastPlaylistForm){
+        pastPlaylistForm.addEventListener('submit', (function(param){
+            return function (e) {
+                validateForm(e, param);
+            };
+        }) ("past-playlist-form"));
+    }
+
+    //Event listener for removing songs via checkboxes (calls validateForm)
+    let currentTimeslotForm = document.getElementById("current-timeslot-form");
+    if (currentTimeslotForm){
+        currentTimeslotForm.addEventListener('submit', (function(param){
+            return function (e) {
+                validateForm(e, param);
+            };
+        }) ("current-timeslot-form"));
+    }
+
     //Handler to validate if any boxes are checked in a form
     //If not, stops submission and highlights boxes
     let validateForm = function (e, formID){
@@ -105,7 +127,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
         });
     }
 
-    //Handler to remove a single element whose corresponding button was clicked
+    //----------------------------------------------------------------------BUTTON EVENTS
+
+    //Event listener for clicking singular remove button
+    let removeButtons = document.querySelectorAll(".remove-btn");
+    removeButtons.forEach(function(button) {
+        button.addEventListener("click", (function(param) {
+            return function(e) {               
+                removeElement(e, param);
+            };
+        }) (button));
+    });
+
+    //Handler for singular remove button
     let removeElement = function(e){
         let row = e.target.parentElement.parentElement;
         let rows = e.target.parentElement.parentElement.parentElement.children;
@@ -113,6 +147,97 @@ window.addEventListener("DOMContentLoaded", (e) => {
         restoreIndices(rows);
     }
 
+    //----------------------------------------------------------------------FORM VISIBILITY + TEXT FORMS
+
+    //Event listener to make form visible
+    let showFormButton = document.getElementById('edit-form-toggle');
+    if (showFormButton){
+        showFormButton.addEventListener("click", (function() {
+            return function(e) {
+                populateForm(e);
+            };
+        }) ());
+    }
+
+    //Handler to make form visible and validate it
+    function populateForm(e, playlist) {
+        //Get current title/desc info
+        let title = document.getElementById('timeslot-title').textContent;
+        let desc = document.getElementById('timeslot-desc').textContent;
+
+        //Populate form values
+        document.getElementById('edit-title').value = title;
+        document.getElementById('edit-desc').value = desc;
+
+        //Create object to store title/desc info
+        let playlistInfo = {
+            currentTitle: title,
+            currentDesc: desc
+        };
+
+        //Create listeners for each form field (blur)
+        let fields = [document.getElementById('edit-title'), 
+                      document.getElementById('edit-desc')];
+        fields.forEach((field) => {
+            field.addEventListener("blur", (e) => {
+                if (field.value == ""){
+                    field.style.outline = "2px solid red";
+                }
+                else{
+                    field.style.outline = "none";
+                }
+            });
+        });
+
+        //Create listener for submission
+        let form = document.getElementById("playlist-form");
+        form.addEventListener("submit", (e) => {
+            playlistInfo.currentTitle = document.getElementById('edit-title').value;
+            playlistInfo.currentDesc = document.getElementById('edit-desc').value;
+            
+            //Check if fields are blank
+            if (playlistInfo.currentTitle == "" || playlistInfo.currentDesc == ""){
+                window.alert("Fields cannot be left blank.");
+                e.preventDefault();
+            }
+
+            //Replace title/desc with user input if not
+            else {
+                //Create new playlist title
+                const hea = document.createElement("h2");
+                const node = document.createTextNode(playlistInfo.currentTitle);
+                hea.appendChild(node);
+
+                //Create new playlist description
+                const par = document.createElement("p");
+                const node2 = document.createTextNode(playlistInfo.currentDesc);
+                par.appendChild(node2);
+                
+                //Alter playlist title
+                document.getElementById('timeslot-title').replaceWith(hea);
+
+                //Alter playlist description
+                document.getElementById('timeslot-desc').replaceWith(par);
+
+                //Shoo away menu after use
+                form.style.display= "none";
+            }
+        });
+    }
+
+    //---------------------------------------------------------------------ACCESSING AND CHANGING DOM ELEMENTS
+
+    //Event listener for clicking play button
+    let playButtons = document.querySelectorAll(".play-btn");
+    playButtons.forEach(function(button) {
+        button.addEventListener("click", (function(param) {
+            return function(e) {               
+                playSong(e, param);
+            };
+        }) (button));
+    });
+
+    //Handler for clicking play button
     let playSong = function(e){
         e.stopPropagation();
 
@@ -135,66 +260,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         playerText.innerHTML = "<b>Now Playing:</b> " + artistName + " - " + songName
     }
 
-    //Handler to make form visible
-    function populateForm(e, playlist) {
-        let title = document.getElementById('timeslot-title').textContent;
-        let desc = document.getElementById('timeslot-desc').textContent;
-
-        document.getElementById('edit-title').value = title;
-        document.getElementById('edit-desc').value = desc;
-
-        let playlistInfo = {
-            currentTitle: title,
-            currentDesc: desc
-        };
-
-        //Create listeners for each field
-        let fields = [document.getElementById('edit-title'), 
-                      document.getElementById('edit-desc')];
-        fields.forEach((field) => {
-            field.addEventListener("blur", (e) => {
-                if (field.value == ""){
-                    field.style.outline = "2px solid red";
-                }
-                else{
-                    field.style.outline = "none";
-                }
-            });
-        });
-
-        //Create listeners for submit
-        let form = document.getElementById("playlist-form");
-        form.addEventListener("submit", (e) => {
-            playlistInfo.currentTitle = document.getElementById('edit-title').value;
-            playlistInfo.currentDesc = document.getElementById('edit-desc').value;
-            
-            if (playlistInfo.currentTitle == "" || playlistInfo.currentDesc == ""){
-                window.alert("Fields cannot be left blank.");
-                e.preventDefault();
-            }
-            else {
-                //Create new playlist title
-                const hea = document.createElement("h2");
-                const node = document.createTextNode(playlistInfo.currentTitle);
-                hea.appendChild(node);
-
-                //Create new playlist description
-                const par = document.createElement("p");
-                const node2 = document.createTextNode(playlistInfo.currentDesc);
-                par.appendChild(node2);
-                
-                //Alter playlist title
-                document.getElementById('timeslot-title').replaceWith(hea);
-
-                //Alter playlist description
-                document.getElementById('timeslot-desc').replaceWith(par);
-
-                //Shoo away menu after use
-                form.style.display= "none";
-            }
-        });
-
-    }
+    //--------------------------------------------------------------------------------HELPER FUNCTIONS
 
     //Helper function to keep playlist item indices in order 1-n after removal
     let restoreIndices = function(rows){
@@ -205,55 +271,5 @@ window.addEventListener("DOMContentLoaded", (e) => {
             count++;
         }
         return count;
-    }
-
-    //Event listener for adding songs form
-    let pastPlaylistForm = document.getElementById("past-playlist-form");
-    if (pastPlaylistForm){
-        pastPlaylistForm.addEventListener('submit', (function(param){
-            return function (e) {
-                validateForm(e, param);
-            };
-        }) ("past-playlist-form"));
-    }
-
-    //Event listener for removing songs form
-    let currentTimeslotForm = document.getElementById("current-timeslot-form");
-    if (currentTimeslotForm){
-        currentTimeslotForm.addEventListener('submit', (function(param){
-            return function (e) {
-                validateForm(e, param);
-            };
-        }) ("current-timeslot-form"));
-    }
-
-    //Event listener for clicking singular remove button
-    let removeButtons = document.querySelectorAll(".remove-btn");
-    removeButtons.forEach(function(button) {
-        button.addEventListener("click", (function(param) {
-            return function(e) {               
-                removeElement(e, param);
-            };
-        }) (button));
-    });
-
-    //Event listener for clicking play button
-    let playButtons = document.querySelectorAll(".play-btn");
-    playButtons.forEach(function(button) {
-        button.addEventListener("click", (function(param) {
-            return function(e) {               
-                playSong(e, param);
-            };
-        }) (button));
-    });
-
-    //Event listener for opening the playlist edit menu
-    let showFormButton = document.getElementById('edit-form-toggle');
-    if (showFormButton){
-        showFormButton.addEventListener("click", (function() {
-            return function(e) {
-                populateForm(e);
-            };
-        }) ());
     }
 });
