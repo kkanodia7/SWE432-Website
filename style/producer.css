@@ -446,7 +446,7 @@ audio {
 
 
 /*calnder code*/
-/* 
+
 .center-container {
     display: flex;
     justify-content: center;
@@ -455,130 +455,102 @@ audio {
     margin-left: 25%;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
-
-
-.calendar{
-    display: inline-grid;
-    justify-content: center;
+.wrapperCalendar{
+    /* width: 450px; */
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgb(234, 235, 247);
+  }
+  .wrapperCalendar header{
+    display: flex;
     align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: #457B9D;
+  }
+  header .iconsCalendar{
+    display: flex;
+    
+  }
+  header .iconsCalendar span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+  }
+  .iconsCalendar span:last-child{
+    margin-right: -10px;
+  }
+  header .iconsCalendar span:hover{
+    background: #f2f2f2;
+    
+  }
+  header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+  }
+  .calendar{
+    padding: 20px;
     background: #498ff8;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0px 40px 30px -20px rgba(0, 0, 0, 0.3);
-    font-family: 'Questrial', sans-serif;
-  
-  .month{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:20px;
-    margin-bottom:20px;
-    font-weight:300;
-    
-    .year{
-      font-weight:600;
-      margin-left:10px;
-    }
-    
-    .nav{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-decoration:none;
-      color:#0a3d62;
-      width:40px;
-      height:40px;
-      border-radius:40px;
-      transition-duration:.2s;
-      position:relative;
-      
-      &:hover{
-        background:#fff;
-      }
-    }
+    /* box-shadow: 0px 40px 30px -20px rgb(247, 224, 224); */
   }
-  
-  .days{
-    display: grid;
-    justify-content:center;
-    align-items:center;
-    grid-template-columns: repeat(7, 1fr);
-    color:#fdf3f3;
-    font-weight:600;
-    margin-bottom:15px;
-    
-    span{
-      width:50px;
-      justify-self:center;
-      align-self:center;
-      text-align:center;
-    }
+  .calendar .days{
+    margin-bottom: 20px;
   }
-  
-  .dates{
-    display:grid;
-    grid-template-columns: repeat(7, 1fr);
-    
-    button{
-      cursor:pointer;
-      outline:0;
-      border:0;
-      background:transparent;
-      font-family: 'Montserrat', sans-serif;
-      font-size:16px;
-      justify-self:center;
-      align-self:center;
-      width:50px;
-      height:50px;
-      border-radius:50px;
-      margin:2px;
-      transition-duration:.2s;
-      
-      &.today{
-        box-shadow:inset 0px 0px 0px 2px #0a3d62;
-      }
-      
-      &:first-child{
-        grid-column:3;
-      }
-      
-      &:hover{
-        background:#eee;
-      }
-      
-      &:focus{
-        background:#0a3d52;
-        color:#fff;
-        font-weight:600;
-      }
-    }
+  .calendar li{
+    color: #333333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
   }
-}
-
-.timeslot {
-    margin-top: 10px;
-} 
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"], textarea {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
+  .calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+  }
+  .calendar .days li{
+    z-index: 1;
     cursor: pointer;
-} */
+    position: relative;
+    margin-top: 30px;
+  }
+  .days li.inactive{
+    color: #aaa;
+  }
+  .days li.active{
+    color: #fff;
+  }
+  .days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .days li.active::before{
+    background: #2834e7;
+  }
+  .days li:not(.active):hover::before{
+    background: #f2f2f2;
+  }

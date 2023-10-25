@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PopCraze Radio</title>
-    <link rel="stylesheet" href="../../style/group06.css">
-    <script src="../../js/generalsite.js"></script>
+    <link rel="stylesheet" href="../../style/producer.css">
+    <script src="../../js/producers.js"></script>
 </head>
 
 <body>
@@ -86,11 +86,19 @@
                         <img src="../../img/fluent-mdl2_feedback.svg" alt="Feedback Icon" width="200" height="200">
                     </div>
                     <div class="search-content">
-                        <p>We value your feedback! Let us know what you think about our DJs, songs, and time slots.</p>
+                        <p>Send a feedback message to a DJ!</p>
                         <div class="list-box">
                             <div class="grid-item">
                                 <h2>Leave Feedback</h2>
-                                <form action="submitFeedbackURL" method="post">
+                                <form action="submitFeedbackURL" method="post" onsubmit="return confirmFeedbackSubmission();">
+                                    <!-- Dropdown to select a DJ to send the the feedBack to-->
+                                    <label for="djSelect">Select DJ:</label>
+                                    <select name="djSelect" id="djSelect">
+                                        <option value="dj1">DJ 1</option>
+                                        <option value="dj2">DJ 2</option>
+                                        <option value="dj3">DJ 3</option>
+                                    </select><br><br>
+                        
                                     <textarea name="feedbackText" rows="5" cols="50" placeholder="Type your feedback here..."></textarea><br>
                                     <input type="submit" value="Submit Feedback">
                                 </form>

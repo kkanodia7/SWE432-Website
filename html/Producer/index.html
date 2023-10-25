@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PopCraze Radio</title>
-    <link rel="stylesheet" href="../../style/group06.css">
-    <script src="../../js/generalsite.js"></script>
+    <link rel="stylesheet" href="../../style/producer.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="../../js/producers.js" defer></script>
 </head>
 
 <body>
@@ -80,117 +82,29 @@
             <div class="sitebody">
                 <p><a href="">Home</a> > <a href="">My Playlists</a></p>
                 <h1>Schedule</h1>
-                <div class="calendar center-container">
-                    <div class="month"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a>
-                        <div>October <span class="year">2023</span></div><a href="#" class="nav"><i
-                                class="fas fa-angle-right"></i></a>
-                    </div>
-                    <div class="days">
-                        <span>Mon</span>
-                        <span>Tue</span>
-                        <span>Wed</span>
-                        <span>Thu</span>
-                        <span>Fri</span>
-                        <span>Sat</span>
-                        <span>Sun</span>
-                    </div>
-                    <div class="dates">
-                        <button>
-                            <time>1</time>
-                        </button>
-                        <button>
-                            <time>2</time>
-                        </button>
-                        <button>
-                            <time>3</time>
-                        </button>
-                        <button>
-                            <time>4</time>
-                        </button>
-                        <button>
-                            <time>5</time>
-                        </button>
-                        <button>
-                            <time>6</time>
-                        </button>
-                        <button class="today">
-                            <time>7</time>
-                        </button>
-                        <button>
-                            <time>8</time>
-                        </button>
-                        <button>
-                            <time>9</time>
-                        </button>
-                        <button>
-                            <time>10</time>
-                        </button>
-                        <button>
-                            <time>11</time>
-                        </button>
-                        <button>
-                            <time>12</time>
-                        </button>
-                        <button>
-                            <time>13</time>
-                        </button>
-                        <button>
-                            <time>14</time>
-                        </button>
-                        <button>
-                            <time>15</time>
-                        </button>
-                        <button>
-                            <time>16</time>
-                        </button>
-                        <button>
-                            <time>17</time>
-                        </button>
-                        <button>
-                            <time>18</time>
-                        </button>
-                        <button>
-                            <time>19</time>
-                        </button>
-                        <button>
-                            <time>20</time>
-                        </button>
-                        <button>
-                            <time>21</time>
-                        </button>
-                        <button>
-                            <time>22</time>
-                        </button>
-                        <button>
-                            <time>23</time>
-                        </button>
-                        <button>
-                            <time>24</time>
-                        </button>
-                        <button>
-                            <time>25</time>
-                        </button>
-                        <button>
-                            <time>26</time>
-                        </button>
-                        <button>
-                            <time>27</time>
-                        </button>
-                        <button>
-                            <time>28</time>
-                        </button>
-                        <button>
-                            <time>29</time>
-                        </button>
-                        <button>
-                            <time>30</time>
-                        </button>
-                        <button>
-                            <time>31</time>
-                        </button>
+                <div class="center-container">
+                <div class="wrapperCalendar">
+                    <header>
+                        <p class="current-date"></p>
+                        <div class="iconsCalendar">
+                            <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                            <span id="next" class="material-symbols-rounded">chevron_right</span>
+                        </div>
+                    </header>
+                    <div class="calendar">
+                        <ul class="weeks">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                        </ul>
+                        <ul class="days"></ul>
                     </div>
                 </div>
-
+            </div>
                 <!-- List of elements -->
                 <div class="listing">
 
@@ -201,9 +115,15 @@
                             <img src="../../img/dj.svg" alt="Icon" width="75" height="75">
                             <!-- Time slot inputs -->
                             <div class="timeslot">
-                                <input type="time" id="startTime" value="14:00">
+                                
+                                <input type="time" id="startTime" value="14:00" readonly>
                                 -
-                                <input type="time" id="endTime" value="16:00">
+                                <input type="time" id="endTime" value="16:00" readonly>
+                                <button >
+                                    <img src="../../img/fluent_edit-16-filled.svg" alt="Icon" width="25"
+                                        height="25">
+                                </button>
+                                
                             </div>
                         </div>
 
@@ -233,81 +153,72 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Artist</td>
+                                        <td>Artist1</td>
                                         <td>Name</td>
                                         <td>
-                                            <button id="playPauseButton">
-                                                <img id="playPauseImage"
-                                                    src="../../img/line-md:play-to-pause-transition.svg" alt="Icon"
+                                            <button class="playPauseButton">
+                                                <img class="playPauseImage"
+                                                    src="../../img/line-md_play-to-pause-transition.svg" alt="Icon"
                                                     width="25" height="25">
                                             </button>
-                                            <button>
+                                            <button onclick="addToTrend(this.parentElement.parentElement.querySelector('td:nth-child(3)'), this.parentElement.parentElement.querySelector('td:nth-child(2)'))">
                                                 <img src="../../img/cil_check.svg" alt="Icon" width="25"
                                                     height="25">
                                             </button>
 
-                                            <button>
+                                            <button class="remove-btn">
                                                 <img src="../../img/mdi_remove-outline.svg" alt="Icon" width="25"
                                                     height="25">
                                             </button>
-                                            <button>
-                                                <img src="../../img/fluent_edit-16-filled.svg" alt="Icon" width="25"
-                                                    height="25">
-                                            </button>
+                                            
 
 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>Artist</td>
+                                        <td>Artist2</td>
                                         <td>Name</td>
                                         <td>
-                                            <button id="playPauseButton">
-                                                <img id="playPauseImage"
-                                                    src="../../img/line-md:play-to-pause-transition.svg" alt="Icon"
+                                            <button class="playPauseButton">
+                                                <img class="playPauseImage"
+                                                    src="../../img/line-md_play-to-pause-transition.svg" alt="Icon"
                                                     width="25" height="25">
                                             </button>
-                                            <button>
+                                            <button onclick="addToTrend(this.parentElement.parentElement.querySelector('td:nth-child(3)'), this.parentElement.parentElement.querySelector('td:nth-child(2)'))">
                                                 <img src="../../img/cil_check.svg" alt="Icon" width="25"
                                                     height="25">
                                             </button>
 
-                                            <button>
+                                            <button class="remove-btn">
                                                 <img src="../../img/mdi_remove-outline.svg" alt="Icon" width="25"
                                                     height="25">
                                             </button>
-                                            <button>
-                                                <img src="../../img/fluent_edit-16-filled.svg" alt="Icon" width="25"
-                                                    height="25">
-                                            </button>
+                                            
 
 
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Artist</td>
+                                        <td>Artist3</td>
                                         <td>Name</td>
                                         <td>
-                                            <button id="playPauseButton">
-                                                <img id="playPauseImage"
-                                                    src="../../img/line-md:play-to-pause-transition.svg" alt="Icon"
+                                            <button class="playPauseButton">
+                                                <img class="playPauseImage"
+                                                    src="../../img/line-md_play-to-pause-transition.svg" alt="Icon"
                                                     width="25" height="25">
                                             </button>
-                                            <button>
+                                            <button onclick="addToTrend(this.parentElement.parentElement.querySelector('td:nth-child(3)'), this.parentElement.parentElement.querySelector('td:nth-child(2)'))">
                                                 <img src="../../img/cil_check.svg" alt="Icon" width="25"
                                                     height="25">
                                             </button>
 
-                                            <button>
+                                            <button class="remove-btn">
                                                 <img src="../../img/mdi_remove-outline.svg" alt="Icon" width="25"
                                                     height="25">
                                             </button>
-                                            <button>
-                                                <img src="../../img/fluent_edit-16-filled.svg" alt="Icon" width="25"
-                                                    height="25">
-                                            </button>
+                                            
 
 
                                         </td>
