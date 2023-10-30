@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="">My Playlists</a></p>
+                <h1>My Playlists</h1>
+                <!-- List of elements -->
+                <div class="listing">
+                    
+                    <h3>Favorites</h3>
+                    <div class="list-box">
+                        <!-- List icon here -->
+                        <div class="grid-item">
+                            <img src="../../img/fav_icon.png" alt="Favorites Icon" id="list-icon"></a>
+                            <!-- Fav Icon obtained from: https://www.freeimages.com/clipart/heart-5299786 -->
+                        </div>
+
+                        <!-- List text here -->
+                        <div class="grid-item">
+                            <div class="row">
+                                <h4>Favorites</h4>
+                                <p>Playlist containing all songs and DJs added to favorites. These are used to determine your preferences.</p>
+                            </div>
+                            <div class="row">
+                                <button>
+                                    <a href="./favorites">View All</a>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- List elements here -->
+                        <div class="grid-item">
+                            <table>
+                                <thead>
+                                    <th></th>
+                                    <th>Artist</th>
+                                    <th>Song</th>
+                                    <th>Options</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Artist1</td>
+                                        <td>FavSong1</td>
+                                        <td>
+                                            <button onclick="playSong(this)">Play</button>
+                                            <button>Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Artist2</td>
+                                        <td>FavSong2</td>
+                                        <td>
+                                            <button onclick="playSong(this)">Play</button>
+                                            <button>Details</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                <div class="listing">
+                    
+                    <h3>Recommended</h3>
+                    <div class="list-box">
+                        <!-- List icon here -->
+                        <div class="grid-item">
+                            <img src="../../img/rec_icon.png" alt="Recommended Icon" id="list-icon"></a>
+                            <!-- Rec Icon obtained from: https://www.cleanpng.com/free/yellow-star.html -->
+                        </div>
+
+                        <!-- List text here -->
+                        <div class="grid-item">
+                            <div class="row">
+                                <h4>Recommended</h4>
+                                <p>A list of upcoming songs and DJs that are recommended for you, based on your preferences and what is currently popular.</p>
+                            </div>
+                            <div class="row">
+                                <button>
+                                    <a href="./recommended">View All</a>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- List elements here -->
+                        <div class="grid-item">
+                            <table>
+                                <thead>
+                                    <th></th>
+                                    <th>Artist</th>
+                                    <th>Song</th>
+                                    <th>Options</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Artist3</td>
+                                        <td>RecSong1</td>
+                                        <td>
+                                            <button onclick="playSong(this)">Play</button>
+                                            <button>Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Artist4</td>
+                                        <td>RecSong2</td>
+                                        <td>
+                                            <button onclick="playSong(this)">Play</button>
+                                            <button>Details</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+
+            <!-- Audio Player -->
+            <%- include('../partials/audio-player'); %>
+
+        </div>
+    </div>
+</body>
+</html>

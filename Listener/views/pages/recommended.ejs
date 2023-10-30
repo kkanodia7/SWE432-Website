@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+
+
+            <!-- Main Content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="./index">My Playlists</a> > <a href="">Recommended</a></p>
+                <h1>Recommended Playlist</h1>
+        
+                <!-- Flexbox for Image on the left and Content on the right -->
+                <div class="search-flex-container">
+                    <div class="search-image">
+                        <img src="../../img/rec_icon.png" alt="Recommended Icon">
+                    </div>
+                    <div class="search-content">
+                        <p>This playlist contains upcoming songs and DJs that are recommended for you based on your preferences.
+                            To modify your preferences, add songs and DJs you enjoy to your
+                            <a href="./favorites">Favorites</a> playlist.
+                        </p>
+                        <div class="list-box">
+                            <!-- Table with song list -->
+                            <div class="grid-item">
+                                <h2>Recommended Songs</h2>
+                                <table id="rec-songs">
+                                    <thead>
+                                        <th></th>
+                                        <th>Artist</th>
+                                        <th>Song</th>
+                                        <th>Options</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Artist3</td>
+                                            <td>RecSong1</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Artist4</td>
+                                            <td>RecSong2</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Artist5</td>
+                                            <td>RecSong3</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="list-box">        
+                            <!-- Table with DJ list -->
+                            <div class="grid-item">
+                                <h2>Recommended DJs</h2>
+                                <table id="rec-djs">
+                                    <thead>
+                                        <th></th>
+                                        <th>DJ</th>
+                                        <th>Time Slot</th>
+                                        <th>Options</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>DJ4</td>
+                                            <td>Time Slot</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>DJ5</td>
+                                            <td>Time Slot</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>DJ6</td>
+                                            <td>Time Slot</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="addToFavorites(this)">Favorite</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer -->
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+
+            <!-- Audio Player -->
+            <%- include('../partials/audio-player'); %>
+
+
+        </div>
+    </div>
+</body>
+</html>
