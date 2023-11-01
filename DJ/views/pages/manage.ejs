@@ -39,7 +39,7 @@
 
             <!-- Main content -->
             <div class="sitebody">
-                <p><a href="" style="color:blue">Home</a> > <a href="/index" style="color:blue">Time Slots</a> > Manage Time Slot</p>
+                <p><a href="" style="color:blue">Home</a> > <a href="/index/<%= userid %>" style="color:blue">Time Slots</a> > Manage Time Slot</p>
                 <h1>Manage Time Slot</h1>
 
                 <div class="row">
@@ -51,8 +51,8 @@
                             <figcaption>
                                 <h2>Your scheduled playlist</h2>
                                 <h3 id="date-time">
-                                    <p id="date">11/24/2023</p>
-                                    <p id="times">1:00pm - 3:00pm</p>
+                                    <p id="date"><%= timeslot.date %></p>
+                                    <p id="times"><%= timeslot.start %> - <%= timeslot.end %></p>
                                 </h3>
                             </figcaption>
                         </figure>
@@ -73,8 +73,8 @@
 
                         <!--Playlist for this timeslot-->
                         <div>
-                            <h2 id="timeslot-title">Afternoon Tunes</h2> 
-                            <p id="timeslot-desc">Songs to play for a relaxing afternoon.</p>
+                            <h2 id="timeslot-title"><%= timeslot.title %></h2> 
+                            <p id="timeslot-desc"><%= timeslot.desc %></p>
 
                             <button type="button" id="edit-form-toggle" onclick="(() => 
                                 document.getElementById('playlist-form').style.display = 'inline')()">
@@ -108,10 +108,12 @@
                                                     <th>Select</th>
                                                 </thead>
                                                 <tbody id="timeslot-body">
+                                                    <% var i = 1; %>
+                                                    <% timeslot.songs.forEach(function(song) {%>
                                                     <tr>
-                                                        <td><b>1</b></td>
-                                                        <td>SZA</td>
-                                                        <td>Kill Bill</td>
+                                                        <td><b><%= i++ %></b></td>
+                                                        <td><%= song.artist %></td>
+                                                        <td><%= song.title %></td>
                                                         <td>
                                                             <button class="play-btn" type="button">Play</button>
                                                         </td>
@@ -119,17 +121,7 @@
                                                             <input type="checkbox" class="checkbox"/>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td><b>2</b></td>
-                                                        <td>Miley Cyrus</td>
-                                                        <td>Flowers</td>
-                                                        <td>
-                                                            <button class="play-btn" type="button">Play</button>
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" class="checkbox"/>
-                                                        </td>
-                                                    </tr>
+                                                    <%});%>
                                                 </tbody>
                                                 <tfoot>
                                                     <td></td>
@@ -154,10 +146,11 @@
                         <!--Each playlist table is its own form-->
                         <ul id="past-playlist-list" style="padding: 0; margin: 0; list-style-type: none;">
                             <!-- List of elements -->
+                            <% pastTimeslots.forEach(function(pastslot) {%>
                             <li>
                                 <div class="listing">
                             
-                                <h3><p class="past-date-time">10/18/2023 9:00pm - 11:00pm</p>
+                                <h3><p class="past-date-time"><%= pastslot.date %> <%= pastslot.start %> - <%= pastslot.end %></p>
                                 </h3>
                                 <div class="list-box">
                                         <!-- List icon here -->
@@ -165,8 +158,8 @@
                                             <figure>
                                                 <img src="../../img/searchicon.png" id="list-icon"></a>
                                                 <figcaption>
-                                                <h4 class = "past-title">Past Playlist Title</h4>
-                                                    <p class = "past-desc">Past Playlist Description</p>
+                                                <h4 class = "past-title"><%= pastslot.title %></h4>
+                                                    <p class = "past-desc"><%= pastslot.desc %></p>
                                                 </figcaption>
                                             </figure>
                                         </div>
@@ -182,22 +175,17 @@
                                                         <th>Actions</th>
                                                     </thead>
                                                     <tbody>
+                                                        <% var i = 1;%>
+                                                        <% pastslot.songs.forEach(function(song) {%>
                                                         <tr>
-                                                            <td><b>1</b></td>
-                                                            <td>Taylor Swift</td>
-                                                            <td>Cruel Summer</td>
+                                                            <td><b><% i++ %></b></td>
+                                                            <td><%= song.artist %></td>
+                                                            <td><%= song.title %></td>
                                                             <td>
                                                                 <button class="play-btn" type="button">Play</button>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><b>2</b></td>
-                                                            <td>Drake</td>
-                                                            <td>Virginia Beach</td>
-                                                            <td>
-                                                                <button class="play-btn" type="button">Play</button>
-                                                            </td>
-                                                        </tr>
+                                                        <%});%>
                                                     </tbody>
                                                     <tfoot>
                                                         <td></td>
@@ -205,7 +193,7 @@
                                                         <td></td>
                                                         <td>
                                                             <button>
-                                                                <a href="/playlist">Add songs to current timeslot
+                                                                <a href="/playlist/<%= userid %>/<%= timeslot.tsid %>/<%= pastslot.tsid %>">Add songs to current timeslot
                                                             </button>
                                                         </td>
                                                     </tfoot>
@@ -215,6 +203,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <%});%>
                         </ul>
                     </div>
                 </div>

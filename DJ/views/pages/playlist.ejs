@@ -39,7 +39,7 @@
 
             <!-- Main content -->
             <div class="sitebody">
-                <p><a href="" style="color:blue">Home</a> > <a href="/index" style="color:blue">Time Slots</a> > <a href="/manage">Manage Time Slot</a> > View Past Playlist</p>
+                <p><a href="" style="color:blue">Home</a> > <a href="/index/<%= userid %>" style="color:blue">Time Slots</a> > <a href="/manage/<%= userid %>/<%= play1 %>">Manage Time Slot</a> > View Past Playlist</p>
                 <h1>Select songs</h1>
 
                 <div class="row">
@@ -50,7 +50,7 @@
                             <img src="/img/searchicon.png" style="max-width: 200px; max-height:200px;"/>
                             <figcaption>
                                 <h2>Viewing past playlist</h2>
-                                <h3 class="past-date-time">10/18/2023 9:00pm - 11:00pm</h3>
+                                <h3 class="past-date-time"><%= timeslot.date %> (<%= timeslot.start %> - <%= timeslot.end %>)</h3>
                             </figcaption>
                         </figure>
                     </div>
@@ -60,7 +60,7 @@
 
                         <!--Playlist for past timeslot-->
                         <div>
-                            <h2>[Past playlist title]</h2> 
+                            <h2><%= timeslot.title %></h2> 
 
                             <div class="listing">
                                 <div class="list-box">
@@ -77,10 +77,12 @@
                                                     <th>Select</th>
                                                 </thead>
                                                 <tbody id="table-body">
+                                                    <% var i = 1; %>
+                                                    <% timeslot.songs.forEach(function(song) {%>
                                                     <tr>
-                                                        <td><b>1</b></td>
-                                                        <td class="artist">Taylor Swift</td>
-                                                        <td class="song">Cruel Summer</td>
+                                                        <td><b><%= i++ %></b></td>
+                                                        <td class="artist"><%= song.artist %></td>
+                                                        <td class="song"><%= song.title %></td>
                                                         <td>
                                                             <button class="play-btn" type="button">Play</button>
                                                         </td>
@@ -88,17 +90,7 @@
                                                             <input type="checkbox" class="checkbox"/>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td><b>2</b></td>
-                                                        <td class="artist">Drake</td>
-                                                        <td class="song">Virginia Beach</td>
-                                                        <td>
-                                                            <button class="play-btn" type="button">Play</button>
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" class="checkbox"/>
-                                                        </td>
-                                                    </tr>
+                                                    <%});%>
                                                 </tbody>
                                                 <tfoot>
                                                     <td></td>

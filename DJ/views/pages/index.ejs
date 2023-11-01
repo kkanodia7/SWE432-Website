@@ -24,21 +24,23 @@
                 <ul id="timeslots-list" style="padding: 0; margin: 0; list-style-type: none;">
                     
                     <li>
+                        
+                        <% timeslots.forEach(function(timeslot) {%>
                         <!-- List of elements 1-->
                         <div class="listing">
                             
-                            <h3 class="date-time">11/24/2023 (1:00pm - 3:00pm)</h3>
+                            <h3 class="date-time"><%= timeslot.date %> (<%= timeslot.start %> - <%= timeslot.end %>)</h3>
                             <div class="list-box">
                                 <!-- List icon here -->
                                 <div class="grid-item">
                                     <figure>
                                         <img src="/img/searchicon.png" id="list-icon"></a>
                                         <figcaption>
-                                            <h4 class="timeslot-title">Afternoon Tunes</h4>
-                                            <p class="timeslot-desc">Songs to play for a relaxing afternoon.
+                                            <h4 class="timeslot-title"><%= timeslot.title %></h4>
+                                            <p class="timeslot-desc"><%= timeslot.desc %>
                                                 <br>
                                                 <button>
-                                                <a href="/manage">Manage</a>
+                                                <a href="/manage/<%= userid %>/<%= timeslot.tsid %>">Manage</a>
                                                 </button>
                                             </p>
                                         </figcaption>
@@ -55,87 +57,24 @@
                                             <th>Options</th>
                                         </thead>
                                         <tbody class="timeslot-body">
+                                            <% var i = 1; %>
+                                            <% timeslot.songs.forEach(function(song) {%>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Miley Cyrus</td>
-                                                <td>Flowers</td>
+                                                <td><%= i++ %></td>
+                                                <td><%= song.artist %></td>
+                                                <td><%= song.title %></td>
                                                 <td>
                                                     <button class="remove-btn" type="button">Remove</button>
                                                     <button class="play-btn" type="button">Play</button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Katy Perry</td>
-                                                <td>Firework</td>
-                                                <td>
-                                                    <button class="remove-btn" type="button">Remove</button>
-                                                    <button class="play-btn" type="button">Play</button>
-                                                </td>
-                                            </tr>
+                                            <% }); %>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </li>
-
-
-                    <!-- List of elements 2-->
-                    <li>
-                        <div class="listing">
-                            
-                            <h3>11/30/2023 (7:00am - 11:00am)</h3>
-                            <div class="list-box">
-                                <!-- List icon here -->
-                                <div class="grid-item">
-                                    <figure>
-                                        <img src="/img/searchicon.png" id="list-icon"></a>
-                                        <figcaption>
-                                            <h4 class="timeslot-title">Morning Mix</h4>
-                                            <p class="timeslot-desc">Songs to start the day with.
-                                                <br>
-                                                <button>
-                                                <a href="/manage">Manage</a>
-                                                </button>
-                                            </p>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-
-                                <!-- List elements here -->
-                                <div class="grid-item">
-                                    <table>
-                                        <thead>
-                                            <th></th>
-                                            <th>Artist</th>
-                                            <th>Song Title</th>
-                                            <th>Options</th>
-                                        </thead>
-                                        <tbody class="timeslot-body">
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Nicki Minaj</td>
-                                                <td>Barbie World</td>
-                                                <td>
-                                                    <button class="remove-btn" type="button">Remove</button>
-                                                    <button class="play-btn" type="button">Play</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Miley Cyrus</td>
-                                                <td>Flowers</td>
-                                                <td>
-                                                    <button class="remove-btn" type="button">Remove</button>
-                                                    <button class="play-btn" type="button">Play</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <% }); %>
                     </li>
                 </ul>
             </div>
