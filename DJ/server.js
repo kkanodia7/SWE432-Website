@@ -3,23 +3,23 @@ var app     = express();
 
 //Set the view engine to ejs
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/../'));
+app.use(express.static('public'));
 
 //Index page
 app.get('/index', function(req, res) {
     console.log("index page");
-    res.render('index.ejs');
+    res.render('pages/index.ejs');
 });
 
 app.get('/manage', function(req, res){
     console.log("Manage page");
-    res.render('manage.ejs');
+    res.render('pages/manage.ejs');
 })
 
 //About page
 app.get('/playlist', function(req, res) {
     console.log("Playlist page");
-    res.render('playlist.ejs');
+    res.render('pages/playlist.ejs');
 });
 
 app.listen(8080);

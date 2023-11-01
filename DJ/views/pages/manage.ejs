@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PopCraze Radio</title>
+    <link rel="stylesheet" href="/style/group06.css">
+    <link rel="stylesheet" href="/style/dj.css">
+    <script src="/dj.js"></script>
+    <style>
+        tbody{
+            color:darkslategrey;
+        }
+
+        table td:first-child{
+            color: black;
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <!-- Site logo / Search bar / Welcome -->
+
+                <div class="top-grid">
+                    <!-- Logo -->
+                    <div class="grid-item" id="sitelogo">
+                        <img src="/img/logo.png" alt="Logo">
+                    </div>
+
+                    <!-- Search (TODO: trying to get it to take up more space)-->
+                    <div class="grid-item" id="search">
+                        <form id="search-form">
+                            <input type="text" id="search-bar" name="search" placeholder="Search...">
+                        </form>
+                    </div>
+
+                    <!-- Welcome -->
+                    <div class="grid-item" id="welcome">
+                        Welcome, [USER]!
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav>
+
+                    <!-- General navigation -->
+                    <div class="link-grid" style="height:100%">
+                        <div class="grid-item"><a href=""><b>Home</b></a></div>
+                        <div class="grid-item"><a href=""><b>About</b></a></div>
+                        <div class="grid-item"><a href=""><b>Contact</b></a></div>
+                        <div class="grid-item"><a href=""><b>News</b></a></div>
+                    </div>
+
+                    <!-- User-specific navigation -->
+                    <div class="usernav">
+                        <button id="user-hover"><b>DJ Menu</b></button>
+                        <div class="user-options">
+                            <ul style="padding: 0px; margin: 0; list-style-type: none">
+                                <li><a href="/index" class="dropdown-option">View Time Slots</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <p><a href="" style="color:blue">Home</a> > <a href="/index" style="color:blue">Time Slots</a> > Manage Time Slot</p>
+                <h1>Manage Time Slot</h1>
+
+                <div class="row">
+                
+                    <!--Left column of grid layout-->
+                    <div class="column" style="flex: 1">
+                        <figure>
+                            <img src="/img/searchicon.png" style="max-width: 200px; max-height:200px;"/>
+                            <figcaption>
+                                <h2>Your scheduled playlist</h2>
+                                <h3 id="date-time">
+                                    <p id="date">11/24/2023</p>
+                                    <p id="times">1:00pm - 3:00pm</p>
+                                </h3>
+                            </figcaption>
+                        </figure>
+
+                        <div id="dialog-wrapper" style="position:relative;"">
+                            <dialog open style="margin: 0; position:absolute; border-color: green; border-width: 2px; border-radius: 4px; background-color: lightgreen;">
+                                <h4>You made changes to your playlist.</h4>
+                                <form method="dialog">
+                                    <button autofocus id="dialog-undo">Undo</button>
+                                    <button id="dialog-ok">OK</button>
+                                </form>
+                            </dialog>
+                        </div>
+                    </div>
+                
+                    <!--Right column of grid layout-->
+                    <div class="column" style="flex: 2">
+
+                        <!--Playlist for this timeslot-->
+                        <div>
+                            <h2 id="timeslot-title">Afternoon Tunes</h2> 
+                            <p id="timeslot-desc">Songs to play for a relaxing afternoon.</p>
+
+                            <button type="button" id="edit-form-toggle" onclick="(() => 
+                                document.getElementById('playlist-form').style.display = 'inline')()">
+                                Edit playlist information
+                            </button>
+                            <form id="playlist-form" onsubmit="return false">
+                                <br>
+                                Edit title:
+                                <br>
+                                <input type="text" name="title" id="edit-title">
+                                <br>
+                                Edit description:
+                                <br>
+                                <input type="textarea" name="desc" id="edit-desc">
+                                <br>
+                                <input type="submit" value="Submit">
+                            </form>
+
+                            <div class="listing">
+                                <div class="list-box">
+                                    <!-- List elements here -->
+                                    <div class="grid-item">
+
+                                        <form id="current-timeslot-form" onsubmit="return false">
+                                            <table>
+                                                <thead>
+                                                    <th></th>
+                                                    <th>Artist</th>
+                                                    <th>Song Title</th>
+                                                    <th>Actions</th>
+                                                    <th>Select</th>
+                                                </thead>
+                                                <tbody id="timeslot-body">
+                                                    <tr>
+                                                        <td><b>1</b></td>
+                                                        <td>SZA</td>
+                                                        <td>Kill Bill</td>
+                                                        <td>
+                                                            <button class="play-btn" type="button">Play</button>
+                                                        </td>
+                                                        <td>
+                                                            <input type="checkbox" class="checkbox"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>2</b></td>
+                                                        <td>Miley Cyrus</td>
+                                                        <td>Flowers</td>
+                                                        <td>
+                                                            <button class="play-btn" type="button">Play</button>
+                                                        </td>
+                                                        <td>
+                                                            <input type="checkbox" class="checkbox"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <input type="submit" value="Remove selected" id="remove-current-songs"/>
+                                                    </td>
+                                                </tfoot>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <!--Previous timeslot playlists to pick songs from-->
+                        <h2>Your past playlists</h2>
+                        
+                        <!--Each playlist table is its own form-->
+                        <ul id="past-playlist-list" style="padding: 0; margin: 0; list-style-type: none;">
+                            <!-- List of elements -->
+                            <li>
+                                <div class="listing">
+                            
+                                <h3><p class="past-date-time">10/18/2023 9:00pm - 11:00pm</p>
+                                </h3>
+                                <div class="list-box">
+                                        <!-- List icon here -->
+                                    <div class="grid-item">
+                                            <figure>
+                                                <img src="../../img/searchicon.png" id="list-icon"></a>
+                                                <figcaption>
+                                                <h4 class = "past-title">Past Playlist Title</h4>
+                                                    <p class = "past-desc">Past Playlist Description</p>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+
+                                    <!-- List elements here -->
+                                    <div class="grid-item">
+                                            <div class="past-playlist-table-container">   
+                                                <table>
+                                                    <thead>
+                                                        <th></th>
+                                                        <th>Artist</th>
+                                                        <th>Song Title</th>
+                                                        <th>Actions</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><b>1</b></td>
+                                                            <td>Taylor Swift</td>
+                                                            <td>Cruel Summer</td>
+                                                            <td>
+                                                                <button class="play-btn" type="button">Play</button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>2</b></td>
+                                                            <td>Drake</td>
+                                                            <td>Virginia Beach</td>
+                                                            <td>
+                                                                <button class="play-btn" type="button">Play</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <button>
+                                                                <a href="/playlist">Add songs to current timeslot
+                                                            </button>
+                                                        </td>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+
+                <div id="footer-logo">
+                    <img src="/img/logo.png" alt="Logo"><br>
+                </div>
+
+                <div class="link-grid" id="footer-links">
+                    <div class="grid-item"><a href="">Home</a></div>
+                    <div class="grid-item"><a href="">About</a></div>
+                    <div class="grid-item"><a href="">Contact</a></div>
+                    <div class="grid-item"><a href="">News</a></div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Audio Player -->
+        <div id="audio-player">
+            <audio controls>Audio player not supported.</audio>
+            <p style="font-style:italic;" id="player-text"><b>Playing:</b> [Song name] - [Artist name]</p>
+        </div>
+    </div>
+</body>
+</html>
