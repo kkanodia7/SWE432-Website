@@ -10,7 +10,6 @@ const jsonPath = path.join(__dirname, 'public',
 
 const jsonData = fs.readFileSync(jsonPath, 'utf8');
 const ts = JSON.parse(jsonData);
-console.log(ts)
 
 const user = "DJ123";
 
@@ -57,8 +56,6 @@ app.get('/manage/:uid/:playid', function(req, res){
     //Get old timeslots for user
     const pastslots = jsonData.filter(obj => userid == obj.uid && obj.done);
 
-    console.log(timeslot.songs);
-
     res.render('pages/manage.ejs', {
         username: user,
         userid: userid,
@@ -72,7 +69,6 @@ app.get('/manage/:uid/:playid', function(req, res){
 
 //About page
 app.get('/playlist/:uid/:play1/:play2', function(req, res) {
-    console.log("Playlist page");
 
     //Get user id
     const userid = req.params.uid;
@@ -140,7 +136,6 @@ app.post('/remove/:tid/:title/:artist', function(req, res) {
     const timeslots = jsonData.filter(obj => userId == obj.uid && !obj.done);
 
     //Find and remove song
-    console.log(playlist.songs);
     for (let i in playlist.songs){
         if (playlist.songs[i].title == title && playlist.songs[i].artist == artist){
             playlist.songs.splice(i, 1);
@@ -164,8 +159,6 @@ app.post('/removesongs/:uid/:tsid', function(req, res){
     //Get params
     const userid = req.params.uid;
     const tsid = req.params.tsid;
-
-    console.log('removing multiple songs.');
 
     //Get playlist to remove from
     const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
