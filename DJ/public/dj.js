@@ -65,23 +65,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
             //Clear formatting changes
             for (let box of checkboxes){
                 box.style.outline = "none";
+                if (box.checked){
+                    document.getElementById(`${box.id}Hidden`).disabled = true;
+                }
             }
 
             //If manage page, remove selected songs
             if (formID == "current-timeslot-form"){
-                removeElements(formID, allChecked);
-                return false;
+                //removeElements(formID, allChecked);
+                return true;
             }
 
             //If adding songs, just report success
             else if (formID == "past-playlist-form"){
-                
-                //Get both checked and unchecked boxes values
-                for (let box of checkboxes){
-                    if (box.checked){
-                        document.getElementById(`${box.id}Hidden`).disabled = true;
-                    }
-                }
                 
                 window.alert("Your selected songs have been added.");
                 return true;
@@ -95,45 +91,36 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
 
     //Handler to Remove the elements selected from checkboxes
-    let removeElements = function(formID, allChecked){
-        entireForm = document.getElementById(formID);
-        entireForm.reset();
-        let table = entireForm.children.item(0).children.item(1);
+    //let removeElements = function(formID, allChecked){
+        //entireForm = document.getElementById(formID);
+        //entireForm.reset();
+        //let table = entireForm.children.item(0).children.item(1);
 
         //Save previous table state in case of undo
-        let removed = new Array();
+        //let removed = new Array();
                 
         //Iterate through checked elements and remove them
-        for (let checked of allChecked){
-            //Remove corresponding table row
-            let row = checked.parentElement.parentElement;
-            row.remove();
+        //for (let checked of allChecked){
+        //    //Remove corresponding table row
+        //    let row = checked.parentElement.parentElement;
+        //    row.remove();
 
             //Saving removed elements in case of undo
-            removed.push(row);
-        }
+        //    removed.push(row);
+        //}
 
         //Update index for remaining elements
-        let tableBody = document.getElementById("timeslot-body");
-        let rows = tableBody.children;
-        let count = restoreIndices(rows);
+        //let tableBody = document.getElementById("timeslot-body");
+        //let rows = tableBody.children;
+        //let count = restoreIndices(rows);
         
 
         //Show confirmation dialog
-        let dialog = document.getElementById("dialog-wrapper");
-        dialog.style.visibility = 'visible';
+        //let dialog = document.getElementById("dialog-wrapper");
+        //dialog.style.visibility = 'visible';
 
-        let undoButton = document.getElementById("dialog-undo");
-        undoButton.addEventListener("click", (e) => {
-            while (removed.length > 0){
-                let toAdd = removed.pop();
-                toAdd.children.item(0).textContent = count;
-                tableBody.appendChild(toAdd);
-                count++;
-            }
-            window.location.reload();
-        });
-    }
+        
+    //}
 
     //----------------------------------------------------------------------BUTTON EVENTS
 
@@ -210,7 +197,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
 
             //Replace title/desc with user input if not
-            else {
+            /*else {
                 //Create new playlist title
                 const hea = document.createElement("h2");
                 const node = document.createTextNode(playlistInfo.currentTitle);
@@ -229,13 +216,22 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
                 //Shoo away menu after use
                 form.style.display= "none";
-            }
+            }*/
         });
     }
 
     //---------------------------------------------------------------------ACCESSING AND CHANGING DOM ELEMENTS
 
     //Event listener for clicking play button
+    let formPlayButtons = document.querySelectorAll(".play-btn-form");
+    formPlayButtons.forEach(function(button) {
+        button.addEventListener("click", (function(param) {
+            return function(e) {               
+                playSongForm(e, param);
+            };
+        }) (button));
+    });
+
     let playButtons = document.querySelectorAll(".play-btn");
     playButtons.forEach(function(button) {
         button.addEventListener("click", (function(param) {
@@ -246,7 +242,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     });
 
     //Handler for clicking play button
-    let playSong = function(e){
+    let playSongForm = function(e){
         e.stopPropagation();
 
         let row = e.target.parentElement.parentElement.parentElement;
@@ -266,6 +262,44 @@ window.addEventListener("DOMContentLoaded", (e) => {
         let playerText = document.getElementById("player-text");
 
         playerText.innerHTML = "<b>Now Playing:</b> " + artistName + " - " + songName
+    }
+
+    let playSong = function(e){
+        e.stopPropagation();
+
+        let row = e.target.parentElement.parentElement;
+        let childNodes = row.childNodes;
+
+        //Get name of song
+        let songName = childNodes.item(5).textContent;
+
+        //Get artist name
+        let artistName = childNodes.item(3).textContent;
+
+        //This is where we would get the info/files from the database, 
+        //but that does not exist yet, so I am unable to play a song yet.
+
+        //Get player
+        let player = document.getElementById("audio-player");
+        let playerText = document.getElementById("player-text");
+
+        playerText.innerHTML = "<b>Now Playing:</b> " + artistName + " - " + songName
+    }
+
+    let okButton = document.getElementById('dialog-ok');
+    if (okButton){
+        okButton.addEventListener("click", (function() {
+            return function(e) {
+                dialogOk(e);
+            };
+        }) ());
+    }
+
+    let dialogOk = function(e){
+        console.log('clicked ok');
+
+        let wrapper = document.getElementById('dialog-itself');
+        wrapper.style.visibility="hidden";
     }
 
     //--------------------------------------------------------------------------------HELPER FUNCTIONS

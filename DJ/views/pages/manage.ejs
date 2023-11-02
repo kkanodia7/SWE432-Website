@@ -57,12 +57,12 @@
                             </figcaption>
                         </figure>
 
-                        <div id="dialog-wrapper" style="position:relative;"">
-                            <dialog open style="margin: 0; position:absolute; border-color: green; border-width: 2px; border-radius: 4px; background-color: lightgreen;">
+                        <div id="dialog-wrapper" style="position:relative;">
+                            <dialog open id="dialog-itself" style="margin: 0; position:absolute; border-color: green; border-width: 2px; border-radius: 4px; background-color: lightgreen; visibility: <%= showdialog %>">
                                 <h4>You made changes to your playlist.</h4>
-                                <form method="dialog">
-                                    <button autofocus id="dialog-undo">Undo</button>
-                                    <button id="dialog-ok">OK</button>
+                                <form class="dialog" name="undo-changes" action="/undo/<%= timeslot.tsid %>/<%= timeslot.uid %>/<%= recentlyremoved %>" method="post">
+                                    <input autofocus id="dialog-undo" type="submit" value="Undo">
+                                    <button id="dialog-ok" type="button">OK</button>
                                 </form>
                             </dialog>
                         </div>
@@ -80,7 +80,7 @@
                                 document.getElementById('playlist-form').style.display = 'inline')()">
                                 Edit playlist information
                             </button>
-                            <form id="playlist-form" onsubmit="return false">
+                            <form id="playlist-form" method="post" action="/editinfo/<%= timeslot.uid %>/<%= timeslot.tsid %>">
                                 <br>
                                 Edit title:
                                 <br>
@@ -98,7 +98,7 @@
                                     <!-- List elements here -->
                                     <div class="grid-item">
 
-                                        <form id="current-timeslot-form" onsubmit="return false">
+                                        <form id="current-timeslot-form" action="/removesongs/<%= userid %>/<%= timeslot.tsid %>/" method="post">
                                             <table>
                                                 <thead>
                                                     <th></th>
@@ -118,7 +118,8 @@
                                                             <button class="play-btn" type="button">Play</button>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" class="checkbox"/>
+                                                            <input type="hidden" value="0" id="s<%=i%>Hidden" name="s<%=i%>">
+                                                            <input type="checkbox" value="1" id="s<%=i%>" name="s<%=i%>" class="checkbox"/>
                                                         </td>
                                                     </tr>
                                                     <%});%>
@@ -156,7 +157,7 @@
                                         <!-- List icon here -->
                                     <div class="grid-item">
                                             <figure>
-                                                <img src="../../img/searchicon.png" id="list-icon"></a>
+                                                <img src="/img/searchicon.png" id="list-icon"></a>
                                                 <figcaption>
                                                 <h4 class = "past-title"><%= pastslot.title %></h4>
                                                     <p class = "past-desc"><%= pastslot.desc %></p>
