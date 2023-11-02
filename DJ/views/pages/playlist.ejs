@@ -67,7 +67,7 @@
                                     <!-- List elements here -->
                                     <div class="grid-item">
 
-                                        <form id="past-playlist-form">
+                                        <form id="past-playlist-form" action="/addsongs/<%= userid %>/<%= play1 %>/<%= play2 %>" method="post">
                                             <table>
                                                 <thead>
                                                     <th></th>
@@ -80,16 +80,18 @@
                                                     <% var i = 1; %>
                                                     <% timeslot.songs.forEach(function(song) {%>
                                                     <tr>
-                                                        <td><b><%= i++ %></b></td>
+                                                        <td><b><%= i %></b></td>
                                                         <td class="artist"><%= song.artist %></td>
                                                         <td class="song"><%= song.title %></td>
                                                         <td>
                                                             <button class="play-btn" type="button">Play</button>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" class="checkbox"/>
+                                                            <input type="hidden" value="0" id="s<%=i%>Hidden" name="s<%=i%>">
+                                                            <input type="checkbox" value="1" id="s<%=i%>" name="s<%=i%>" class="checkbox"/>
                                                         </td>
                                                     </tr>
+                                                    <%i++;%>
                                                     <%});%>
                                                 </tbody>
                                                 <tfoot>

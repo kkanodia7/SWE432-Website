@@ -75,6 +75,14 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
             //If adding songs, just report success
             else if (formID == "past-playlist-form"){
+                
+                //Get both checked and unchecked boxes values
+                for (let box of checkboxes){
+                    if (box.checked){
+                        document.getElementById(`${box.id}Hidden`).disabled = true;
+                    }
+                }
+                
                 window.alert("Your selected songs have been added.");
                 return true;
             }
@@ -130,7 +138,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     //----------------------------------------------------------------------BUTTON EVENTS
 
     //Event listener for clicking singular remove button
-    let removeButtons = document.querySelectorAll(".remove-btn");
+    /*let removeButtons = document.querySelectorAll(".remove-btn");
     removeButtons.forEach(function(button) {
         button.addEventListener("click", (function(param) {
             return function(e) {               
@@ -141,11 +149,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
     //Handler for singular remove button
     let removeElement = function(e){
-        let row = e.target.parentElement.parentElement;
-        let rows = e.target.parentElement.parentElement.parentElement.children;
+        let row = e.target.parentElement.parentElement.parentElement;
+        let rows = e.target.parentElement.parentElement.parentElement.parentElement.children;
         row.remove();
         restoreIndices(rows);
-    }
+    }*/
 
     //----------------------------------------------------------------------FORM VISIBILITY + TEXT FORMS
 
@@ -241,7 +249,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     let playSong = function(e){
         e.stopPropagation();
 
-        let row = e.target.parentElement.parentElement;
+        let row = e.target.parentElement.parentElement.parentElement;
         let childNodes = row.childNodes;
 
         //Get name of song
