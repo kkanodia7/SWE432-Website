@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <style>
+        tbody{
+            color:darkslategrey;
+        }
+
+        table td:first-child{
+            color: black;
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <p><a href="" style="color:blue">Home</a> > <a href="/index/<%= userid %>" style="color:blue">Time Slots</a> > <a href="/manage/<%= userid %>/<%= play1 %>">Manage Time Slot</a> > View Past Playlist</p>
+                <h1>Select songs</h1>
+
+                <div class="row">
+                
+                    <!--Left column of grid layout-->
+                    <div class="column" style="flex: 1">
+                        <figure>
+                            <img src="/img/playlist.png" style="max-width: 200px; max-height:200px;"/>
+                            <figcaption>
+                                <h2>Viewing past playlist</h2>
+                                <h3 class="past-date-time"><%= timeslot.date %> (<%= timeslot.start %> - <%= timeslot.end %>)</h3>
+                            </figcaption>
+                        </figure>
+                    </div>
+                
+                    <!--Right column of grid layout-->
+                    <div class="column" style="flex: 2">
+
+                        <!--Playlist for past timeslot-->
+                        <div>
+                            <h2><%= timeslot.title %></h2> 
+
+                            <div class="listing">
+                                <div class="list-box">
+                                    <!-- List elements here -->
+                                    <div class="grid-item">
+
+                                        <form id="past-playlist-form" action="/addsongs/<%= userid %>/<%= play1 %>/<%= play2 %>" method="post">
+                                            <table>
+                                                <thead>
+                                                    <th></th>
+                                                    <th>Artist</th>
+                                                    <th>Song Title</th>
+                                                    <th>Actions</th>
+                                                    <th>Select</th>
+                                                </thead>
+                                                <tbody id="table-body">
+                                                    <% var i = 1; %>
+                                                    <% timeslot.songs.forEach(function(song) {%>
+                                                    <tr>
+                                                        <td><b><%= i %></b></td>
+                                                        <td class="artist"><%= song.artist %></td>
+                                                        <td class="song"><%= song.title %></td>
+                                                        <td>
+                                                            <button class="play-btn" type="button">Play</button>
+                                                        </td>
+                                                        <td>
+                                                            <input type="hidden" value="0" id="s<%=i%>Hidden" name="s<%=i%>">
+                                                            <input type="checkbox" value="1" id="s<%=i%>" name="s<%=i%>" class="checkbox"/>
+                                                        </td>
+                                                    </tr>
+                                                    <%i++;%>
+                                                    <%});%>
+                                                </tbody>
+                                                <tfoot>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <input type="submit" value="Add to current timeslot" id="submit-past-songs"/>
+                                                    </td>
+                                                </tfoot>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+
+        <!-- Audio Player -->
+        <div id="audio-player">
+            <%- include('../partials/player'); %>
+        </div>
+    </div>
+</body>
+</html>

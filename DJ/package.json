@@ -1,0 +1,19 @@
+{
+  "name": "dj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dj.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "node": "^21.1.0",
+    "path": "^0.12.7"
+  }
+}

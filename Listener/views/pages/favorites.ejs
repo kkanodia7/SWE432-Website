@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+
+
+            <!-- Main Content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="./index">My Playlists</a> > <a href="">Favorites</a></p>
+                <h1>Favorites Playlist</h1>
+        
+                <!-- Flexbox for Image on the left and Content on the right -->
+                <div class="search-flex-container">
+                    <div class="search-image">
+                        <img src="Listener/img/fav_icon.png" alt="Favorites Icon">
+                    </div>
+                    <div class="search-content">
+                        <p>This playlist contains all songs and DJs you have favorited. These are used to determine
+                            your preferences. To find more songs to add to your favorites, use the search bar above or check
+                            out the <a href="./recommended">Recommended</a> playlist.
+                        </p>
+                        <div class="list-box">
+                            <!-- Table with song list -->
+                            <div class="grid-item">
+                                <h2>Favorite Songs</h2>
+                                <table>
+                                    <thead>
+                                        <th></th>
+                                        <th>Artist</th>
+                                        <th>Song</th>
+                                        <th>Options</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Artist1</td>
+                                            <td>FavSong1</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Artist2</td>
+                                            <td>FavSong2</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Artist3</td>
+                                            <td>FavSong3</td>
+                                            <td>
+                                                <button onclick="playSong(this)">Play</button>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="list-box">        
+                            <!-- Table with DJ list -->
+                            <div class="grid-item">
+                                <h2>Favorite DJs</h2>
+                                <table>
+                                    <thead>
+                                        <th></th>
+                                        <th>DJ</th>
+                                        <th>Options</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>DJ1</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>DJ2</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>DJ3</td>
+                                            <td>
+                                                <button>Details</button>
+                                                <button onclick="removeEntry(this)">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer -->
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+
+            <!-- Audio Player -->
+            <%- include('../partials/audio-player'); %>
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+        <!-- Site logo / Search bar / Welcome -->
+        <div class="top-grid">
+            <!-- Logo -->
+            <div class="grid-item" id="sitelogo">
+                <img src="/img/logo.png" alt="Logo">
+            </div>
+
+            <!-- Search (TODO: trying to get it to take up more space)-->
+            <div class="grid-item" id="search">
+                <form id="search-form">
+                    <input type="text" id="search-bar" name="search" placeholder="Search...">
+                </form>
+            </div>
+
+            <!-- Welcome -->
+            <div class="grid-item" id="welcome">
+                Welcome, <%= username %>!
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+
+            <!-- General navigation -->
+            <div class="link-grid" style="height:100%">
+                <div class="grid-item"><a href=""><b>Home</b></a></div>
+                <div class="grid-item"><a href=""><b>About</b></a></div>
+                <div class="grid-item"><a href=""><b>Contact</b></a></div>
+                <div class="grid-item"><a href=""><b>News</b></a></div>
+            </div>
+
+            <!-- User-specific navigation -->
+            <div class="usernav">
+                <button id="user-hover"><b>DJ Menu</b></button>
+                <div class="user-options">
+                    <ul style="padding: 0px; margin: 0; list-style-type: none">
+                        <li><a href="/index/<%= userid %>" class="dropdown-option">View Time Slots</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>

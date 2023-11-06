@@ -1,0 +1,16 @@
+#dialog-wrapper{
+    visibility: hidden;
+}
+
+main button{
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 10px;
+}
+
+#playlist-form{
+    display: none;
+}
+
+#playlist-form input{
+    margin-bottom: 10px;
+}

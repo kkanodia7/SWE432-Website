@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+
+        <!-- Helps keep footer at bottom -->
+        <div class="content-wrap">
+            
+            <!-- Header -->
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <p><a href="" style="color:blue">Home</a> > Time Slots</p>
+                <h1>Time Slots</h1>
+
+                <ul id="timeslots-list" style="padding: 0; margin: 0; list-style-type: none;">
+                    
+                    <li>
+                        
+                        <% timeslots.forEach(function(timeslot) {%>
+                        <!-- List of elements 1-->
+                        <div class="listing">
+                            
+                            <h3 class="date-time"><%= timeslot.date %> (<%= timeslot.start %> - <%= timeslot.end %>)</h3>
+                            <div class="list-box">
+                                <!-- List icon here -->
+                                <div class="grid-item">
+                                    <figure>
+                                        <img src="/img/playlist.png" id="list-icon"></a>
+                                        <figcaption>
+                                            <h4 class="timeslot-title"><%= timeslot.title %></h4>
+                                            <p class="timeslot-desc"><%= timeslot.desc %>
+                                                <br>
+                                                <button>
+                                                <a href="/manage/<%= userid %>/<%= timeslot.tsid %>">Manage</a>
+                                                </button>
+                                            </p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+
+                                <!-- List elements here -->
+                                <div class="grid-item">
+                                    <table>
+                                        <thead>
+                                            <th></th>
+                                            <th>Artist</th>
+                                            <th>Song Title</th>
+                                            <th>Options</th>
+                                        </thead>
+                                        <tbody class="timeslot-body">
+                                            <% var i = 1; %>
+                                            <% timeslot.songs.forEach(function(song) {%>
+                                            <tr>
+                                                <td><%= i++ %></td>
+                                                <td><%= song.artist %></td>
+                                                <td><%= song.title %></td>
+                                                <td>
+                                                    <form id="remove-single-song" name="remove-single-song" action="/remove/<%= timeslot.tsid %>/<%= song.title %>/<%= song.artist %>" method="post">
+                                                        <input type="hidden" name="<%= timeslot.tid %>" value="1"/>
+                                                        <input class="remove-btn" type="submit" value="Remove">
+                                                        <button class="play-btn-form" name="remove" type="button">Play</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+
+        <!-- Audio Player -->
+        <div id="audio-player">
+            <%- include('../partials/player'); %>
+        </div>
+    </div>
+</body>
+</html>
