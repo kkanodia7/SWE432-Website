@@ -1,0 +1,55 @@
+<header>
+    <!-- Site logo / Search bar / Welcome -->
+    <div class="top-grid">
+        <!-- Logo -->
+        <div class="grid-item" id="sitelogo">
+            <img src="/Producer/Public/img/logo.png" alt="PopCraze Logo">
+        </div>
+
+        <!-- Search -->
+        <div class="grid-item" id="search">
+            <form id="search-form">
+                <input type="text" id="search-bar" name="search" placeholder="Search...">
+            </form>
+        </div>
+
+        <!-- Welcome -->
+        <div class="grid-item" id="welcome">
+            Welcome, <%= userName %>!
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="sitenav">
+        <!-- General navigation -->
+        <div class="link-grid" style="height:100%">
+            <div class="grid-item"><a href="/"><b>Home</b></a></div>
+            <div class="grid-item"><a href="/about"><b>About</b></a></div>
+            <div class="grid-item"><a href="/contact"><b>Contact</b></a></div>
+            <div class="grid-item"><a href="/news"><b>News</b></a></div>
+        </div>
+
+        <!-- User-specific navigation -->
+        <div class="usernav">
+            <button id="user-hover"><b>
+                    <img src="/Producer/Public/img/ion_menu.svg" alt="Icon" width="40" height="35">
+                    </b></button>
+            <div class="user-options boldAndLarge">
+                <ul style="list-style-type: none; margin: 0%; padding: 0%;">
+                    <li><a href="/index" class="dropdown-option">
+                            <img src="/Producer/Public/img/ion_time-outline.svg" alt="Icon" width="40" height="35">
+                            Schedule</a></li>
+                    <li><a href="/dj-page" class="dropdown-option">
+                            <img src="/Producer/Public/img/tabler_music.svg" alt="Icon" width="40" height="35">
+                            DJ</a></li>
+                    <li><a href="/trend" class="dropdown-option">
+                            <img src="/Producer/Public/img/ion_stats-chart.svg" alt="Icon" width="40" height="35">
+                            Trends</a></li>
+                    <li><a href="/feedback" class="dropdown-option">
+                            <img src="/Producer/Public/img/fluent-mdl2_feedback.svg" alt="Icon" width="40" height="35">
+                            Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

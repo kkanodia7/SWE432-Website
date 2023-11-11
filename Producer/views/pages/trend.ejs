@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PopCraze Radio</title>
+    <link rel="stylesheet" href="/Producer/Public/style/producer.css">
+    <script src="/Producer/Public/script/producers.js"></script>
+</head>
+<body>
+
+    <!-- Main container for everything -->
+    <div class="container">
+        <div class="content-wrap">
+            <%- include('../partials/header') %>
+
+            <!-- Main Content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="./index">My Playlists</a> > <a href="">Favorites</a></p>
+                <h1>Stat's Page</h1>
+        
+                <!-- Flexbox for Image on the left and Content on the right -->
+                <div class="search-flex-container">
+                    <div class="search-image">
+                        <!-- ../../img/ion_stats-chart.svg" -->
+                        <img src="/Producer/Public/img/ion_stats-chart.svg" alt="Icon" width="200" height="200">
+                    </div>
+                    <div class="search-content">
+                        <p>This is the trend page providing stats to DJ, Songs, and Time slot audience tune in</p>
+                        <div class="list-box">
+                            <div class="grid-item">
+                            <h2>DJ's playlist</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Artist</th>
+                                        <th>Song</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (playlist && playlist.length > 0) { %>
+                                        <% playlist.forEach(function(playlist, index) { %>
+                                            <tr>
+                                                <td><%= index + 1 %></td>
+                                                <td><%= playlist.artist %></td>
+                                                <td><%= playlist.song %></td>
+                                                <td>
+                                                    <!-- Buttons with dynamic actions -->
+                                                    <button class="playPauseButton">
+                                                        <img class="playPauseImage"
+                                                            src="../../img/line-md_play-to-pause-transition.svg" alt="Icon"
+                                                            width="25" height="25">
+                                                    </button>
+                                                    <button onclick="addToTrend(this.parentElement.parentElement.querySelector('td:nth-child(3)'), this.parentElement.parentElement.querySelector('td:nth-child(2)'))">
+                                                        <img src="../../img/cil_check.svg" alt="Icon" width="25"
+                                                            height="25">
+                                                    </button>
+        
+                                                    <button class="remove-btn">
+                                                        <!-- "../../img/mdi_remove-outline.svg" -->
+                                                        <img src="/Producer/Public/img/mdi_remove-outline.svg" alt="Icon" width="25"
+                                                            height="25">
+                                                    </button>
+                                                    
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="4">No playlists found.</td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <%- include('../partials/footer') %>
+            <%- include('../partials/audioPlayer') %>
+        </div>
+    </div>
+</body>
+</html>

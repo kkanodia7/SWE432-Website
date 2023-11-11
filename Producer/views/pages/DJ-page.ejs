@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', { title: 'PopCraze Radio' }) %>
+<body>
+    <div class="container">
+        <div class="content-wrap">
+            <%- include('../partials/header') %>
+            
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="/Producer/views/pages/index.ejs">My Playlists</a> > <a href="">Favorites</a></p>
+                <h1>DJ's Page</h1>
+
+                <div class="search-flex-container">
+                    <div class="search-image">
+                        <img src="../../img/dj.svg" alt="Icon" width="200" height="200">
+                    </div>
+                    <div class="search-content">
+                        <p>This is the DJ's page which includes the Bio and Playlist for the Producer to modify.</p>
+                        <div class="list-box">
+                            <div class="grid-item">
+                            <h2>DJ's playlist</h2>
+                            <table>
+                                <thead>
+                                    <th></th>
+                                    <th>Artist</th>
+                                    <th>Song</th>
+                                    <th>Options</th>
+                                </thead>
+                                <tbody>
+                                        <% playlist.forEach(function(item) { %>
+                                            <tr>
+                                                <td><%= item.id %></td>
+                                                <td><%= item.artist %></td>
+                                                <td><%= item.song %></td>
+                                                <td>
+                                                    <button class="playPauseButton">
+                                                        <img class="playPauseImage" src="/Producer/Public/img/line-md_play-to-pause-transition.svg" alt="Icon" width="25" height="25">
+                                                    </button>
+                                                    <button onclick="addToTrend(this.parentElement.parentElement.querySelector('td:nth-child(3)'), this.parentElement.parentElement.querySelector('td:nth-child(2)'))">
+                                                        <img src="/Producer/Public/img/cil_check.svg" alt="Icon" width="25" height="25">
+                                                    </button>
+                            
+                                                    <button class="remove-btn">
+                                                        <img src="/Producer/Public/img/mdi_remove-outline.svg" alt="Icon" width="25" height="25">
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <% }); %> 
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('../partials/footer') %>
+        </div>
+    </div>
+
+    <%- include('../partials/audioPlayer') %>
+</body>
+</html>

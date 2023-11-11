@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <div class="container">
+        <div class="content-wrap">
+            <%- include('../partials/header') %>
+
+            <!-- Main content -->
+            <div class="sitebody">
+                <p><a href="">Home</a> > <a href="">My Playlists</a></p>
+                <h1>Schedule</h1>
+                <div class="center-container">
+                    <div class="wrapperCalendar">
+                        <header>
+                            <p class="current-date"></p>
+                            <div class="iconsCalendar">
+                                <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                                <span id="next" class="material-symbols-rounded">chevron_right</span>
+                            </div>
+                        </header>
+                        <div class="calendar">
+                            <ul class="weeks">
+                                <li>Sun</li>
+                                <li>Mon</li>
+                                <li>Tue</li>
+                                <li>Wed</li>
+                                <li>Thu</li>
+                                <li>Fri</li>
+                                <li>Sat</li>
+                            </ul>
+                            <ul class="days"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- List of elements -->
+                <div class="listing">
+                    <h3>DJ</h3>
+                    <div class="list-box">
+                        <!-- List icon here -->
+                        <div class="grid-item">
+                            <img src="../../img/dj.svg" alt="Icon" width="75" height="75">
+                            <!-- Time slot inputs -->
+                            <div class="timeslot">
+                                
+                                <input type="time" id="startTime" value="14:00" readonly>
+                                -
+                                <input type="time" id="endTime" value="16:00" readonly>
+                                <button >
+                                    <img src="../../img/fluent_edit-16-filled.svg" alt="Icon" width="25"
+                                        height="25">
+                                </button>
+                                
+                            </div>
+                        </div>
+
+                        <!-- List text here -->
+                        <div class="grid-item">
+                            <div class="row">
+                                <h4>DJ</h4>
+                                <p>Playlist containing all songs and DJs added to favorites. These are used to determine
+                                    your preferences.</p>
+                            </div>
+                            <div class="row">
+                                <button>
+                                    <a href="./DJ-page">DJ page</a>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- List elements here -->
+                        <div class="grid-item">
+                            <table>
+                                <thead>
+                                    <th></th>
+                                    <th>Artist</th>
+                                    <th>Song</th>
+                                    <th>Options</th>
+                                </thead>
+                                <tbody>
+                                    <% playlist.forEach(function(item) { %>
+                                        <tr>
+                                            <td><%= item.id %></td>
+                                            <td><%= item.artist %></td>
+                                            <td><%= item.song %></td>
+                                            <td>
+                                                <button class="playPauseButton">
+                                                    <img class="playPauseImage" src="/Producer/Public/img/line-md_play-to-pause-transition.svg" alt="Icon" width="25" height="25">
+                                                </button>
+                                                <button onclick="addToTrend(this.parentElement.parentElement.querySelector('td:nth-child(3)'), this.parentElement.parentElement.querySelector('td:nth-child(2)'))">
+                                                    <img src="/Producer/Public/img/cil_check.svg" alt="Icon" width="25" height="25">
+                                                </button>
+                        
+                                                <button class="remove-btn">
+                                                    <img src="/Producer/Public/img/mdi_remove-outline.svg" alt="Icon" width="25" height="25">
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('../partials/footer') %>
+            <%- include('../partials/audioPlayer') %>
+        </div>
+    </div>
+</body>
+</html>
