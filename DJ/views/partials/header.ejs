@@ -14,7 +14,11 @@
 
             <!-- Welcome -->
             <div class="grid-item" id="welcome">
-                Welcome, <%= username %>!
+                <% if (username == ""){ %>
+                    Sign in
+                <%} else {%>
+                    Welcome, <%= username %>!
+                <%}%>
             </div>
         </div>
 
@@ -23,7 +27,7 @@
 
             <!-- General navigation -->
             <div class="link-grid" style="height:100%">
-                <div class="grid-item"><a href=""><b>Home</b></a></div>
+                <div class="grid-item"><a href="/index"><b>Home</b></a></div>
                 <div class="grid-item"><a href=""><b>About</b></a></div>
                 <div class="grid-item"><a href=""><b>Contact</b></a></div>
                 <div class="grid-item"><a href=""><b>News</b></a></div>
@@ -34,7 +38,10 @@
                 <button id="user-hover"><b>DJ Menu</b></button>
                 <div class="user-options">
                     <ul style="padding: 0px; margin: 0; list-style-type: none">
-                        <li><a href="/index/<%= userid %>" class="dropdown-option">View Time Slots</a></li>
+                        <%if (userid != "") {%>
+                            <li><a href="/index/<%= userid %>" class="dropdown-option">View Time Slots</a></li>
+                            <li><a href="/logout" class="dropdown-option">Logout</a></li>
+                        <%}%>
                     </ul>
                 </div>
             </div>
