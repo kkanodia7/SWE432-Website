@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head'); %>
 </head>
-<body>
+<body data-page="recommended">
 
     <!-- Main container for everything -->
     <div class="container">
@@ -41,9 +41,10 @@
                                         <th></th>
                                         <th>Artist</th>
                                         <th>Song</th>
+                                        <th>Genre</th>
                                         <th>Options</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="RecommendedSongs">
                                         <tr>
                                             <td>1</td>
                                             <td>Artist3</td>
@@ -91,14 +92,12 @@
                                     <thead>
                                         <th></th>
                                         <th>DJ</th>
-                                        <th>Time Slot</th>
                                         <th>Options</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="RecommendedDJs">
                                         <tr>
                                             <td>1</td>
                                             <td>DJ4</td>
-                                            <td>Time Slot</td>
                                             <td>
                                                 <button>Details</button>
                                                 <button onclick="addToFavorites(this)">Favorite</button>
@@ -108,7 +107,6 @@
                                         <tr>
                                             <td>2</td>
                                             <td>DJ5</td>
-                                            <td>Time Slot</td>
                                             <td>
                                                 <button>Details</button>
                                                 <button onclick="addToFavorites(this)">Favorite</button>
@@ -118,7 +116,6 @@
                                         <tr>
                                             <td>3</td>
                                             <td>DJ6</td>
-                                            <td>Time Slot</td>
                                             <td>
                                                 <button>Details</button>
                                                 <button onclick="addToFavorites(this)">Favorite</button>

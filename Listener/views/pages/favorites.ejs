@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head'); %>
 </head>
-<body>
+<body data-page="favorites">
 
     <!-- Main container for everything -->
     <div class="container">
@@ -41,9 +41,10 @@
                                         <th></th>
                                         <th>Artist</th>
                                         <th>Song</th>
+                                        <th>Genre</th>
                                         <th>Options</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="FavoriteSongs">
                                         <tr>
                                             <td>1</td>
                                             <td>Artist1</td>
@@ -90,7 +91,7 @@
                                         <th>DJ</th>
                                         <th>Options</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="FavoriteDJs">
                                         <tr>
                                             <td>1</td>
                                             <td>DJ1</td>
