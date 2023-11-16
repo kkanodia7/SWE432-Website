@@ -312,7 +312,6 @@ app.post('/addsongs/:uid/:play1/:play2', function(req, res) {
             
             //Get all songs in play2
             const songs = play2.songs;
-            console.log(play2.songs);
 
             for (let i = 0; i < checkedary.length; i++){
                 console.log(songs[i]);
@@ -324,7 +323,6 @@ app.post('/addsongs/:uid/:play1/:play2', function(req, res) {
 
             //Update database
             play1.save();
-            console.log(play1);
         });
     });
 });
