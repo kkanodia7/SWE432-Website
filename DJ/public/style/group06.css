@@ -11,6 +11,7 @@ body {
     font-family: Arial;
     color: black;
     margin: 0;
+    min-height: 100%;
 }
 
 .container {
@@ -169,10 +170,12 @@ nav {
 .sitebody {
     padding-left: 5%;
     padding-right: 5%;
+    min-height: 100%;
 }
 
 #content-wrap {
     padding-bottom: 10.5rem;
+    min-height: 100%;
 }
 
 /*-----------Page body stuff-----------*/

@@ -140,6 +140,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
         let rows = e.target.parentElement.parentElement.parentElement.parentElement.children;
         row.remove();
         restoreIndices(rows);
+        
+        console.log(e.target.parentElement);
+        console.log(e.target.parentElement.action);
     }*/
 
     //----------------------------------------------------------------------FORM VISIBILITY + TEXT FORMS
