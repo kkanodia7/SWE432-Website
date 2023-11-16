@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head'); %>
 </head>
-<body>
+<body data-page="index">
 
     <!-- Main container for everything -->
     <div class="container">
@@ -51,10 +51,11 @@
                                     <th></th>
                                     <th>Artist</th>
                                     <th>Song</th>
+                                    <th>Genre</th>
                                     <th>Options</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody id="FavoriteSongs">
+                                    <!-- <tr>
                                         <td>1</td>
                                         <td>Artist1</td>
                                         <td>FavSong1</td>
@@ -71,7 +72,7 @@
                                             <button onclick="playSong(this)">Play</button>
                                             <button>Details</button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -110,10 +111,11 @@
                                     <th></th>
                                     <th>Artist</th>
                                     <th>Song</th>
+                                    <th>Genre</th>
                                     <th>Options</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody id="RecommendedSongs">
+                                    <!-- <tr>
                                         <td>1</td>
                                         <td>Artist3</td>
                                         <td>RecSong1</td>
@@ -130,7 +132,7 @@
                                             <button onclick="playSong(this)">Play</button>
                                             <button>Details</button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

@@ -3,21 +3,30 @@ var audioPlayer;
 var audioLabel;
 var searchForm;
 var searchInput;
+var currentPage;
 
 function playSong(button) {
-    audioBar.style.display = 'flex';
-    audioLabel.innerHTML = '';
     const row = button.parentNode.parentNode;
     const cells = row.getElementsByTagName('td');
     const artist = cells[1].innerText;
     const song = cells[2].innerText;
-    audioLabel.innerHTML = '<i><b>Playing:</b> ' + song + ' - ' + artist + '</i>'
+    localStorage.setItem('playing', 'true');
+    localStorage.setItem('song', song);
+    localStorage.setItem('artist', artist);
+    displaySongInfoInPlayer(song, artist);
     // Put actual song into audio player
+}
+
+function displaySongInfoInPlayer(song, artist) {
+    audioBar.style.display = 'flex';
+    audioLabel.innerHTML = '';
+    audioLabel.innerHTML = '<i><b>Playing:</b> ' + song + ' - ' + artist + '</i>'
 }
 
 function closePlayer() {
     // Stop or pause currently-playing song
     audioBar.style.display = 'none'
+    localStorage.setItem('playing', 'false')
 }
 
 // When user clicks "Remove" button in table row
@@ -27,6 +36,10 @@ function removeEntry(button) {
         const row = button.parentNode.parentNode;
         const rowNum = parseInt(row.firstElementChild.innerText);
         const tbody = row.parentNode;
+        if (tbody.id == "FavoriteSongs" || tbody.id == "RecommendedSongs") {
+            const songName = row.cells[2].textContent;
+            removeSongFromDatabase(tbody.id, songName);
+        }
         tbody.removeChild(row);
         const rows = tbody.getElementsByTagName('tr');
         for (let i = rowNum - 1; i < rows.length; i++) {
@@ -35,18 +48,41 @@ function removeEntry(button) {
     }
 }
 
+
+function removeSongFromDatabase(playlist, songName) {
+    // Send an HTTP request to server to delete the song
+    fetch(`/api/playlists/${playlist}/songs/${songName}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to delete song: ${response.status}`);
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting song:', error);
+    });
+  }
+
+
 function addToFavorites(button) {
     const row = button.parentNode.parentNode;
     const cells = row.getElementsByTagName('td');
     const table = row.parentNode.parentNode;
     if (table.id == 'rec-songs') {
-        const songArtist = cells[1].innerText;
-        const songName = cells[2].innerText;
+        const songArtist = cells[1].textContent;
+        const songName = cells[2].textContent;
+        const songGenre = cells[3].textContent;
+
         let newFavSong = {
+            name: songName,
             artist: songArtist,
-            song: songName
+            genre: songGenre
             // Other information here
         };
+        addSongToDatabase("FavoriteSongs", newFavSong);
+        removeSongFromDatabase("RecommendedSongs", songName);
+
     } else if (table.id == 'rec-djs') {
         const djName = cells[1].innerText;
         let newFavDJ = {
@@ -57,6 +93,26 @@ function addToFavorites(button) {
     button.innerText = "Favorited!"
     // Send objects to server / database as necessary
 }
+
+
+function addSongToDatabase(playlist, song) {
+    fetch(`/api/playlists/${playlist}/songs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(song)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to add song: ${response.status}`);
+        }
+      })
+      .catch(error => {
+        console.error('Error adding song:', error);
+      });
+}
+
 
 function keydownFunc(event) {
     // If user presses spacebar
@@ -88,13 +144,87 @@ function search(event) {
     }
 }
 
+function fillPlaylists() {
+    if (currentPage === 'index') {
+      fetchAndPopulatePlaylist('FavoriteSongs');
+      fetchAndPopulatePlaylist('RecommendedSongs');
+    } else if (currentPage === 'favorites') {
+      fetchAndPopulatePlaylist('FavoriteSongs');
+    //   fetchAndPopulatePlaylist('FavoriteDJs');
+    } else if (currentPage === 'recommended') {
+      fetchAndPopulatePlaylist('RecommendedSongs');
+    //   fetchAndPopulatePlaylist('RecommendedDJs');
+    }
+}
+
+
+
+// Function to fetch and populate a playlist
+function fetchAndPopulatePlaylist(playlist) {
+    fetch(`/api/playlists/${playlist}/songs`)
+      .then(response => response.json())
+      .then(songs => {
+        populateSongsTable(songs, playlist);
+      })
+      .catch(error => {
+        console.error(`Error fetching songs for ${playlist}:`, error);
+      });
+}
+  
+// Function to populate a table with songs
+function populateSongsTable(songs, playlist) {
+    const tableBody = document.getElementById(playlist);
+    tableBody.innerHTML = '';
+    // For index, stop after first 3
+    limit = 3;
+    if (currentPage != "index") {
+        limit = songs.length;
+    }
+    for (let i = 0; i < limit; i++) {
+        const song = songs[i];
+    
+        const row = tableBody.insertRow();
+        const numCell = row.insertCell(0);
+        const artistCell = row.insertCell(1);
+        const nameCell = row.insertCell(2);
+        const genreCell = row.insertCell(3);
+        const optionsCell = row.insertCell(4);
+    
+        numCell.textContent = i+1;
+        nameCell.textContent = song.name;
+        artistCell.textContent = song.artist;
+        genreCell.textContent = song.genre;
+        if (currentPage == "index") {
+            optionsCell.innerHTML = 
+            `<button onclick="playSong(this)">Play</button>
+            <button>Details</button>`;
+        } else if (playlist == "FavoriteSongs") {
+            optionsCell.innerHTML = 
+            `<button onclick="playSong(this)">Play</button>
+            <button>Details</button>
+            <button onclick="removeEntry(this)">Remove</button>`;
+        } else if (playlist == "RecommendedSongs") {
+            optionsCell.innerHTML = 
+            `<button onclick="playSong(this)">Play</button>
+            <button>Details</button>
+            <button onclick="addToFavorites(this)">Favorite</button>
+            <button onclick="removeEntry(this)">Remove</button>`;
+        }
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
     audioBar = document.getElementById("audio-player");
     audioPlayer = document.getElementById("audio-control");
     audioLabel = document.getElementById("audio-label");
     searchForm = document.getElementById("search-form");
-    searchInput = document.getElementById("search-bar")
+    searchInput = document.getElementById("search-bar");
+    currentPage = document.body.dataset.page;
     document.addEventListener('keydown', keydownFunc);
     searchForm.addEventListener('submit', search);
+    fillPlaylists();
+    if (localStorage.getItem('playing') == 'true') {
+        displaySongInfoInPlayer(localStorage.getItem('song'), localStorage.getItem('artist'))
+    }
 });
