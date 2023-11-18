@@ -102,16 +102,14 @@ app.delete('/api/playlists/:playlistName/songs/:songName', async (req, res) => {
 
 // Define song objects
 // const songs = [
-//     { name: 'Song 0', artist: 'Artist 1', genre: 'Genre 1' },
-//     { name: 'Song 1', artist: 'Artist 2', genre: 'Genre 2' },
-//     { name: 'Song 2', artist: 'Artist 3', genre: 'Genre 3' },
-//     { name: 'Song 3', artist: 'Artist 1', genre: 'Genre 1' },
-//     { name: 'Song 4', artist: 'Artist 2', genre: 'Genre 2' },
+//     { name: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Synth-Pop' },
+//     { name: 'California Gurls', artist: 'Katy Perry', genre: 'Disco-Pop' },
+//     { name: 'a m a r i', artist: 'J. Cole', genre: 'Hip-Hop' },
 //   ];
   
 //   // Create a playlist with the songs
 //   const playlist = new Playlist({
-//     name: 'FavoriteSongs', // Replace with the playlist name
+//     name: 'RecommendedSongs', // Replace with the playlist name
 //     songs: songs
 //   });
   

@@ -1,6 +1,7 @@
 var audioBar;
 var audioPlayer;
 var audioLabel;
+var audioFavBtn;
 var searchForm;
 var searchInput;
 var currentPage;
@@ -10,23 +11,35 @@ function playSong(button) {
     const cells = row.getElementsByTagName('td');
     const artist = cells[1].innerText;
     const song = cells[2].innerText;
+    const genre = cells[3].innerText;
+    const tbody = row.parentNode;
     localStorage.setItem('playing', 'true');
     localStorage.setItem('song', song);
     localStorage.setItem('artist', artist);
+    localStorage.setItem('genre', genre);
+    if (tbody.id == "FavoriteSongs") {
+      localStorage.setItem('favorited', 'true');
+    } else {
+      localStorage.setItem('favorited', 'false');
+    }
     displaySongInfoInPlayer(song, artist);
     // Put actual song into audio player
 }
 
 function displaySongInfoInPlayer(song, artist) {
     audioBar.style.display = 'flex';
-    audioLabel.innerHTML = '';
-    audioLabel.innerHTML = '<i><b>Playing:</b> ' + song + ' - ' + artist + '</i>'
+    // audioLabel.innerHTML = '';
+    audioLabel.innerHTML = '<i><b>Playing:</b> ' + song + ' - ' + artist + '</i>';
+    audioFavBtn.innerText = 'Favorite';
+    if (localStorage.getItem('favorited') == 'true') {
+      audioFavBtn.innerText = 'Unfavorite';
+    }
 }
 
 function closePlayer() {
     // Stop or pause currently-playing song
     audioBar.style.display = 'none'
-    localStorage.setItem('playing', 'false')
+    localStorage.clear()
 }
 
 // When user clicks "Remove" button in table row
@@ -94,6 +107,32 @@ function addToFavorites(button) {
     // Send objects to server / database as necessary
 }
 
+function favoriteFromPlayer() {
+  const songArtist = localStorage.getItem('artist');
+  const songName = localStorage.getItem('song');
+  const songGenre = localStorage.getItem('genre');
+  let newSong = {
+    name: songName,
+    artist: songArtist,
+    genre: songGenre
+  };
+  // Remove song from favorites
+  if (localStorage.getItem('favorited') == 'true') {
+    localStorage.setItem('favorited', 'false')
+    audioFavBtn.innerText = "Favorite"
+    removeSongFromDatabase("FavoriteSongs", songName);
+    addSongToDatabase("RecommendedSongs", newSong)
+  }
+  // Add song to favorites
+  else {
+    localStorage.setItem('favorited', 'true')
+    audioFavBtn.innerText = "Unfavorite"
+    addSongToDatabase("FavoriteSongs", newSong);
+    removeSongFromDatabase("RecommendedSongs", songName);
+  }
+  location.reload();
+
+}
 
 function addSongToDatabase(playlist, song) {
     fetch(`/api/playlists/${playlist}/songs`, {
@@ -176,9 +215,9 @@ function populateSongsTable(songs, playlist) {
     const tableBody = document.getElementById(playlist);
     tableBody.innerHTML = '';
     // For index, stop after first 3
-    limit = 3;
-    if (currentPage != "index") {
-        limit = songs.length;
+    limit = songs.length;
+    if (currentPage == "index" && songs.length > 3) {
+        limit = 3;
     }
     for (let i = 0; i < limit; i++) {
         const song = songs[i];
@@ -218,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
     audioBar = document.getElementById("audio-player");
     audioPlayer = document.getElementById("audio-control");
     audioLabel = document.getElementById("audio-label");
+    audioFavBtn = document.getElementById("audio-fav-btn");
     searchForm = document.getElementById("search-form");
     searchInput = document.getElementById("search-bar");
     currentPage = document.body.dataset.page;
