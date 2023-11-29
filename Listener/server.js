@@ -13,7 +13,14 @@ const songSchema = new Schema({
     genre: String,
 });
 const playlistSchema = new Schema({
+    tsid: Number,
+    uid: Number,
+    date: String,
+    start: String,
+    end: String,
+    done: Boolean,
     name: String,
+    desc: String,
     songs: [songSchema],
 });
 const Playlist = mongoose.model('Playlist', playlistSchema);
@@ -100,18 +107,52 @@ app.delete('/api/playlists/:playlistName/songs/:songName', async (req, res) => {
 
 
 
-// Define song objects
+// Favorites Playlist
 // const songs = [
-//     { name: 'Song 0', artist: 'Artist 1', genre: 'Genre 1' },
-//     { name: 'Song 1', artist: 'Artist 2', genre: 'Genre 2' },
-//     { name: 'Song 2', artist: 'Artist 3', genre: 'Genre 3' },
-//     { name: 'Song 3', artist: 'Artist 1', genre: 'Genre 1' },
-//     { name: 'Song 4', artist: 'Artist 2', genre: 'Genre 2' },
+//     { name: 'Firework', artist: 'Katy Perry', genre: 'Dance-Pop' },
+//     { name: 'Virginia Beach', artist: 'Drake', genre: 'Hip-Hop' },
+//     { name: 'Flowers', artist: 'Miley Cyrus', genre: 'Disco-Pop' },
 //   ];
   
 //   // Create a playlist with the songs
 //   const playlist = new Playlist({
-//     name: 'FavoriteSongs', // Replace with the playlist name
+//     tsid: 0,
+//     uid: 0,
+//     date: '',
+//     start: '',
+//     end: '',
+//     done: true,
+//     name: 'FavoriteSongs',
+//     desc: 'Songs that you have added to your favorites',
+//     songs: songs
+//   });
+  
+//   // Save the playlist to the database
+//   playlist.save()
+//     .then(savedPlaylist => {
+//       console.log('Playlist with songs created and saved:', savedPlaylist);
+//     })
+//     .catch(error => {
+//       console.error('Error saving playlist:', error);
+//     });
+
+// Recommended Playlist
+// const songs = [
+//     { name: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Synth-Pop' },
+//     { name: 'California Gurls', artist: 'Katy Perry', genre: 'Disco-Pop' },
+//     { name: 'a m a r i', artist: 'J. Cole', genre: 'Hip-Hop' },
+//   ];
+  
+//   // Create a playlist with the songs
+//   const playlist = new Playlist({
+//     tsid: 0,
+//     uid: 0,
+//     date: '',
+//     start: '',
+//     end: '',
+//     done: true,
+//     name: 'RecommendedSongs',
+//     desc: 'Songs recommended to you based on your favorites',
 //     songs: songs
 //   });
   
