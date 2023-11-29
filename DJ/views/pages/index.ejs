@@ -18,7 +18,14 @@
 
             <!-- Main content -->
             <div class="sitebody">
-                <p><a href="" style="color:blue">Home</a> > Time Slots</p>
+                
+                <% if (userid == null || userid == ""){ %>
+                <p>
+                    <h2>You aren't logged in.</h2>
+                    <h3>Please <a href="/login">log in</a> to view your assigned timeslots.</h3>
+                </p>
+                <%} else { %>
+                <p><a href="/home" style="color:blue">Home</a> > Time Slots</p>
                 <h1>Time Slots</h1>
 
                 <ul id="timeslots-list" style="padding: 0; margin: 0; list-style-type: none;">
@@ -80,6 +87,7 @@
                         <% }); %>
                     </li>
                 </ul>
+                <% } %>
             </div>
 
             <!-- Footer -->
@@ -88,10 +96,14 @@
             </footer>
         </div>
 
-        <!-- Audio Player -->
+        <% if (userid != null && userid != ""){ %>
+        
+            <!-- Audio Player -->
         <div id="audio-player">
             <%- include('../partials/player'); %>
         </div>
+        
+        <% } %>
     </div>
 </body>
 </html>

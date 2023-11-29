@@ -39,7 +39,7 @@
 
             <!-- Main content -->
             <div class="sitebody">
-                <p><a href="" style="color:blue">Home</a> > <a href="/index/<%= userid %>" style="color:blue">Time Slots</a> > Manage Time Slot</p>
+                <p><a href="/home" style="color:blue">Home</a> > <a href="/index/<%= userid %>" style="color:blue">Time Slots</a> > Manage Time Slot</p>
                 <h1>Manage Time Slot</h1>
 
                 <div class="row">
@@ -54,6 +54,10 @@
                                     <p id="date"><%= timeslot.date %></p>
                                     <p id="times"><%= timeslot.start %> - <%= timeslot.end %></p>
                                 </h3>
+                            </figcaption>
+                            <figcaption>
+                                <p>You can view your past timeslots below.</p>
+                                <p>Select songs from them to add to the current one.</p>
                             </figcaption>
                         </figure>
 
@@ -216,10 +220,15 @@
             </footer>
         </div>
 
-        <!-- Audio Player -->
+        
+        <% if (userid != null && userid != ""){ %>
+        
+            <!-- Audio Player -->
         <div id="audio-player">
             <%- include('../partials/player'); %>
         </div>
+        
+        <% } %>
     </div>
 </body>
 </html>

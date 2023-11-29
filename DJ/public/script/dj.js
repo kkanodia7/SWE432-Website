@@ -265,6 +265,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
         let playerText = document.getElementById("player-text");
 
         playerText.innerHTML = "<b>Now Playing:</b> " + artistName + " - " + songName
+
+        //Make player visible if applicable
+        player.style.visibility = "visible";
+
+        
     }
 
     let playSong = function(e){
@@ -287,6 +292,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
         let playerText = document.getElementById("player-text");
 
         playerText.innerHTML = "<b>Now Playing:</b> " + artistName + " - " + songName
+
+        //Make player visible if applicable
+        player.style.visibility = "visible";
     }
 
     let okButton = document.getElementById('dialog-ok');

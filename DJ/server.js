@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 var express = require('express');
 const { timeStamp } = require('console');
 var app     = express();
@@ -43,12 +44,14 @@ const Timeslot = mongoose.model('Timeslot', {
     desc: String,
     songs: [{
             title: String,
-            artist: String
+            artist: String,
+            genre: String
         }]
 });
 
 //Initial setup, commented out to avoid repetition in db entries
-/*const pastSlot = new Timeslot({
+/*
+const pastSlot = new Timeslot({
     tsid: 3,
     uid: 123,
     date: '10/18/2023',
@@ -59,14 +62,49 @@ const Timeslot = mongoose.model('Timeslot', {
     desc: 'Songs to play for a chill night',
     songs: [{
             title: 'Virginia Beach',
-            artist: 'Drake'
+            artist: 'Drake',
+            genre: "Hip-Hop"
         },
         {
             title: 'Cruel Summer',
-            artist: 'Taylor Swift'
+            artist: 'Taylor Swift',
+            genre: "Synth-Pop"
         }]
 });
-pastSlot.save();*/
+pastSlot.save();
+
+const sampleTimeslot = new Timeslot({
+    tsid: 1,
+    uid: 123,   //associated with dj #123
+    date: '11/24/2023',
+    start: '1:00pm',
+    end: '3:00pm',
+    done: false,
+    title: 'Afternoon Tunes',
+    desc: 'Songs to play for a relaxing afternoon',
+    songs: [{
+            title: 'Flowers',
+            artist: 'Miley Cyrus',
+            genre: "Alt-Pop"
+        },
+        {
+            title: 'Firework',
+            artist: 'Katy Perry',
+            genre: "Dance-Pop"
+        },
+        {
+            title: 'Virginia Beach',
+            artist: 'Drake',
+            genre: "Hip-Hop"
+        },
+        {
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+            genre: "Synth-Pop"
+        }
+    ]
+});
+sampleTimeslot.save();*/
 
 /*
 main().catch(err => console.log(err));
@@ -297,6 +335,7 @@ app.get('/playlist/:uid/:play1/:play2', function(req, res) {
 app.post('/addsongs/:uid/:play1/:play2', function(req, res) {
     const playlist1id = req.params.play1;
     const playlist2id = req.params.play2;
+    const userid = req.params.uid;
 
     const checked = req.body;
     const checkedary = [];
@@ -322,7 +361,27 @@ app.post('/addsongs/:uid/:play1/:play2', function(req, res) {
             }
 
             //Update database
-            play1.save();
+            play1.save().then(done => {
+                
+                //Get username of user
+                getUsername(userid).then(user => {
+                    
+                    //Get old timeslots for user
+                    getTimeslots(userid, true).then(pastslots => {
+                        
+                        //Added in Iteration 6: return to timeslot page to show feedback
+                        res.render('pages/manage.ejs', {
+                            username: user,
+                            userid: userid,
+                            playlistid: playlist1id,
+                            timeslot: play1,
+                            pastTimeslots: pastslots,
+                            showdialog: 'hidden',
+                            recentlyremoved: []
+                        });
+                    });
+                });
+            });
         });
     });
 });
