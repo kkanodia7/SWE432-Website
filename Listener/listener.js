@@ -93,8 +93,15 @@ function addToFavorites(button) {
             genre: songGenre
             // Other information here
         };
-        addSongToDatabase("FavoriteSongs", newFavSong);
-        removeSongFromDatabase("RecommendedSongs", songName);
+        if (button.innerText == "Favorite") {
+          addSongToDatabase("FavoriteSongs", newFavSong);
+          removeSongFromDatabase("RecommendedSongs", songName);
+          button.innerText = "Favorited! (Undo)";
+        } else {
+          addSongToDatabase("RecommendedSongs", newFavSong);
+          removeSongFromDatabase("FavoriteSongs", songName);
+          button.innerText = "Favorite";
+        }
 
     } else if (table.id == 'rec-djs') {
         const djName = cells[1].innerText;
@@ -102,9 +109,12 @@ function addToFavorites(button) {
             dj: djName
             // Other information here
         };
+        if (button.innerText == "Favorite") {
+          button.innerText = "Favorited! (Undo)";
+        } else {
+          button.innerText = "Favorite";
+        }
     }
-    button.innerText = "Favorited!"
-    // Send objects to server / database as necessary
 }
 
 function favoriteFromPlayer() {
