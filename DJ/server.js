@@ -206,7 +206,6 @@ app.get('/index', function(req, res) {
     
     //Check if session persisted
     if (req.session.userId != null && req.session.userId != ""){
-        console.log('entered if');
         const uid = req.session.userId;
         const username = req.session.username;
 
@@ -353,7 +352,6 @@ app.post('/addsongs/:uid/:play1/:play2', function(req, res) {
             const songs = play2.songs;
 
             for (let i = 0; i < checkedary.length; i++){
-                console.log(songs[i]);
                 if (checkedary[i] == '1'){
                     let toAdd = {title: songs[i].title, artist: songs[i].artist};
                     play1.songs.push(toAdd);
